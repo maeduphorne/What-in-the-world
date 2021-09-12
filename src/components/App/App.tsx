@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
 import Map from '../Map/Map';
+import apiCalls from '../../api/apiCalls';
+
+interface IState{
+  country: {
+    name: string
+    population: number
+  }[]
+}
 
 function App() {
+  const [countries, setCountries] = useState <IState["country"]>()
+  
+  useEffect(() => {
+    apiCalls.fetchCountriesData()
+    .then((data) => setCountries(data))
+  })
+  
+
+
   return (
     <div className="App">
       <header>
