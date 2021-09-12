@@ -1,23 +1,32 @@
+import { get } from 'https';
 import React, {useState} from 'react';
-import './Quiz.css';
+// import './Quiz.css';
 import { Link } from 'react-router-dom';
 
 interface IState {
-  questions:Array<string>,
+  questions:Array<String> | String
   currentCountry: Object
 }
 
-const Quiz = ({questions, currentCountry}:IState) => {
-  const [quizQuestions, setQuestion] = useState<IState['questions']>('')
-  const [country, setCountry] = useState<IState['currentCountry']>()
+const QuizPage = ({questions, currentCountry}:IState) => {
+  const [quizQuestions, setQuestion] = useState('')
+  const [country, setCountry] = useState({})
+
+  const getRandomElement = (questions:any[]) => {
+    const result = questions[Math.floor(Math.random() * questions.length)]
+    setQuestion(result)
+  }
+
+
+ 
   return (
     <div>
-      Hello World
+     <h1>{quizQuestions}</h1>
     </div>
   )
 }
 
-export default Quiz;
+export default QuizPage;
 
 //This will be our overarching page that renders the initial quiz(form), the answers (which will also have the CountryInfo)
 // function that randomizes the quiz question and passes the correct info to the form component to be compared with the form input values

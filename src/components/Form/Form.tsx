@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Form.css';
 
 const Form = () => {
-
+ const [question, setQuestion] = useState('')
   return (
     <div>
       Hello World

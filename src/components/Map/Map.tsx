@@ -1,13 +1,11 @@
 import React from 'react';
 import './Map.css';
+import QuizPage from '../QuizPage/QuizPage'
 
 const Map = () => {
-
   return (
     <div>
-      I am a 
-      This is where the drop-down menu will live
-      We will render this in app.
+      <QuizPage questions={["What population of", "What is the capital of", "What many countries border"]} currentCountry={Object} />
       
     </div>
   )
