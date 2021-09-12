@@ -1,7 +1,7 @@
 import React from 'react';
 import './ErrorHandling.css';
 
-export const ErrorHandling = () => {
+const ErrorHandling = () => {
 
   return (
     <div>
@@ -9,3 +9,5 @@ export const ErrorHandling = () => {
     </div>
   )
 }
+
+export default ErrorHandling;
