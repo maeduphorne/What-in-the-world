@@ -6,14 +6,14 @@ import Map from '../Map/Map';
 import apiCalls from '../../api/apiCalls';
 
 interface IState{
-  country: {
+  countries: {
     name: string
     population: number
   }[]
 }
 
 function App() {
-  const [countries, setCountries] = useState <IState["country"]>()
+  const [countries, setCountries] = useState <IState["countries"]>([])
   
   useEffect(() => {
     apiCalls.fetchCountriesData()
@@ -21,6 +21,7 @@ function App() {
   })
   
 
+  // const countryNames = countries?.map(country => country.name)
 
   return (
     <div className="App">
@@ -29,7 +30,7 @@ function App() {
       </header>
       <Link to="/" >
         <main className="mainDisplay">
-          <Map />
+          <Map countries={countries}/>
           <img src={mapIcon} alt="world map" className="worldMapImg" />
         </main>
       </Link>
@@ -38,7 +39,10 @@ function App() {
 }
 
 export default App;
+
 //useEffect on pageload to fetch the country data set the state as an array of objects
+
+
 //This will display the Map component on pageload
 //We will set up routes to render based on url
 // the basic layout will be a header with an h1 element
