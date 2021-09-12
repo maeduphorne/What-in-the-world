@@ -1,14 +1,18 @@
 import React from 'react';
 import './Map.css';
+import App from '../App/App';
 
-const Map = () => {
+interface IProps{
+  countries: {
+    name: string
+    population: number
+  }[]
+}
 
+const Map: React.FC<IProps> = ( {countries} ) => {
   return (
     <div>
-      I am a 
-      This is where the drop-down menu will live
-      We will render this in app.
-      
+        Hello I'm in Map!
     </div>
   )
 }
