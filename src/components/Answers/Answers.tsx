@@ -1,7 +1,7 @@
 import React from 'react';
 import './Answers.css';
 
-export const Answers = () => {
+const Answers = () => {
 
   return (
     <div>
@@ -10,3 +10,4 @@ export const Answers = () => {
   )
 }
 
+export default Answers;
