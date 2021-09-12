@@ -1,12 +1,18 @@
 import React from 'react';
 import './Map.css';
-import QuizPage from '../QuizPage/QuizPage'
+import App from '../App/App';
 
-const Map = () => {
+interface IProps{
+  countries: {
+    name: string
+    population: number
+  }[]
+}
+
+const Map: React.FC<IProps> = ( {countries} ) => {
   return (
     <div>
-      <QuizPage questions={["What population of", "What is the capital of", "What many countries border"]} currentCountry={Object} />
-      
+        Hello I'm in Map!
     </div>
   )
 }
