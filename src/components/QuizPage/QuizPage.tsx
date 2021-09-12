@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import './Quiz.css';
 
 interface IState {
-  questions:Array<string>
+  questions:Array<string>,
+  currentCountry: Object
 }
 
-const Quiz = () => {
-
+const Quiz = ({questions, currentCountry}:IState) => {
+  const [question, setQuestion] = useState([''])
+  const [country, setCountry] = useState<IState['currentCountry']>()
   return (
     <div>
       Hello World
