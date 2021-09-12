@@ -1,7 +1,7 @@
 import React from 'react';
 import './Form.css';
 
-export const Form = () => {
+const Form = () => {
 
   return (
     <div>
@@ -9,3 +9,5 @@ export const Form = () => {
     </div>
   )
 }
+
+export default Form;

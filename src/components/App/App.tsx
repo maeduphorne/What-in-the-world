@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../src/assets/logo.svg';
 import './App.css';
+import Map from '../Map/Map';
 
 function App() {
   return (

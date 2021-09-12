@@ -1,11 +1,13 @@
 import React from 'react';
 import './Map.css';
 
-export const Map = () => {
+const Map = () => {
 
   return (
     <div>
-      Hello World
+      I am a map
     </div>
   )
 }
+
+export default Map;

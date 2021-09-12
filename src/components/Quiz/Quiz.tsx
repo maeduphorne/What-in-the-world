@@ -1,7 +1,7 @@
 import React from 'react';
 import './Quiz.css';
 
-export const Quiz = () => {
+const Quiz = () => {
 
   return (
     <div>
@@ -9,3 +9,5 @@ export const Quiz = () => {
     </div>
   )
 }
+
+export default Quiz;
