@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Quiz.css';
+import { Link } from 'react-router-dom';
 
 interface IState {
   questions:Array<string>,
@@ -7,7 +8,7 @@ interface IState {
 }
 
 const Quiz = ({questions, currentCountry}:IState) => {
-  const [question, setQuestion] = useState([''])
+  const [quizQuestions, setQuestion] = useState<IState['questions']>('')
   const [country, setCountry] = useState<IState['currentCountry']>()
   return (
     <div>
