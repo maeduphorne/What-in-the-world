@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import './Quiz.css';
 
+interface IState {
+  questions:Array<string>
+}
+
 const Quiz = () => {
 
   return (
@@ -11,6 +15,7 @@ const Quiz = () => {
 }
 
 export default Quiz;
+
 //This will be our overarching page that renders the initial quiz(form), the answers (which will also have the CountryInfo)
 // function that randomizes the quiz question and passes the correct info to the form component to be compared with the form input values
 // props of questions to Form component
