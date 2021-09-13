@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Map.css';
 import QuizPage from '../QuizPage/QuizPage'
-import { isConstructorDeclaration } from 'typescript';
 const { v4: uuidv4 } = require('uuid')
 // this npm package helps us to set unique keys for components
 
@@ -28,11 +27,7 @@ const Map: React.FC<IProps> = ( {countries} ) => {
    e.preventDefault()
   if(getCurrentCountry()) {
     setDisplayCountry(true)
-  }else {
-    setDisplayCountry(false)
   }
-  
-  
   }
 
   return (

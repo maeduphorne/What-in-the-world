@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-
+import Form from '../Form/Form'
 
 interface IState{
   questions:Array<string> | string
@@ -29,8 +29,8 @@ const QuizPage: React.FC<IState> = ({questions, currentCountry}) => {
   return (
     <div>
      <section>
-       {currentCountry && <h2>{quizQuestions} {currentCountry.name}</h2> }
-     
+       {currentCountry && <h2>{quizQuestions} {currentCountry.name}</h2>}
+       {currentCountry && <Form questions={questions} currentCountry={currentCountry}/>}
      </section>
     </div>
   )
