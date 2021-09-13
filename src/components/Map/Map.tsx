@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Map.css';
-// import App from '../App/App';
 import QuizPage from '../QuizPage/QuizPage'
 const { v4: uuidv4 } = require('uuid')
+// this npm package helps us to set unique keys for components
 
 interface IProps{
   countries: {
@@ -12,24 +12,32 @@ interface IProps{
 }
 
 const Map: React.FC<IProps> = ( {countries} ) => {
+  const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
+  // const value = selectedCountry && selectedCountry.value;
 
-  const [selectedCountry, setSelectedCountry]= useState<string>('')
 
-  const countryNames = countries.map(country => {
-   return <option key={uuidv4()} value={country.name}>{country.name}</option>
+  const countryNames = countries.map(country => { 
+    return <option key={uuidv4()}>{country.name}</option>
   })
 
 
-  const getSelectedCountry = () => {
-    const getCurrentCounty = countries.filter(country => country.name.includes('Afghanistan'))
-    return getCurrentCounty
-  }
+ //// this methos is checking if given country name exist in array of all countries.//////
+
+ const getCurrentCountry = () => {
+   const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
+
+   
+   return country;
+ }
+
   return (
     <section>
     <form className="country-selector">
-      <select defaultValue={'default'} className="country-dropdown">
-        <option value='default' disabled>Choose a country</option>
-        {countryNames}
+      <select 
+      className="country-dropdown"
+      onChange={(e) => setSelectedCountry(e.target.value)}>
+      <option value="">{selectedCountry}</option>
+      options={countryNames}
         </select>
       <button className="dropdown-btn">Submit Country</button>
     </form>
@@ -40,7 +48,7 @@ const Map: React.FC<IProps> = ( {countries} ) => {
        'How many countries border'
       ]
    } 
-    currentCountry={getSelectedCountry()}/>
+    currentCountry={getCurrentCountry()}/>
     </section>
   )
 }

@@ -1,13 +1,14 @@
-
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
+
 interface IState{
   questions:Array<string> | string
-  currentCountry: Object
+  currentCountry: Object | undefined
 }
 
 const QuizPage: React.FC<IState> = ({questions, currentCountry}) => {
+  
   const [quizQuestions, setQuiz] = useState<IState['questions']>()
   const [country, setCountry] = useState<IState['currentCountry']>()
 
