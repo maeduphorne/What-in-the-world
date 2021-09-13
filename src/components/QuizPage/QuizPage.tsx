@@ -3,12 +3,13 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
 interface IState{
-  questions:Array<string>
+  questions:Array<string> | string
   currentCountry: Object
 }
 
-const QuizPage: React.FC<IState> = ({questions}) => {
-  const [quizQuestions, setQuiz] = useState('')
+const QuizPage: React.FC<IState> = ({questions, currentCountry}) => {
+  const [quizQuestions, setQuiz] = useState<IState['questions']>()
+  const [country, setCountry] = useState<IState['currentCountry']>()
 
 
   const getRandomElement = () => {
@@ -37,7 +38,7 @@ const QuizPage: React.FC<IState> = ({questions}) => {
 export default QuizPage;
 
 //This will be our overarching page that renders the initial quiz(form), the answers (which will also have the CountryInfo)
-// function that randomizes the quiz question and passes the correct info to the form component to be compared with the form input values
+// [X] function that randomizes the quiz question and passes the correct info to the form component to be compared with the form input values
 // props of questions to Form component
 // This can hold state of the selected country and state of an array of 4 questions(strings)
 // This will render form that holds a randomized question 

@@ -2,6 +2,7 @@ import React from 'react';
 import './Map.css';
 import App from '../App/App';
 import QuizPage from '../QuizPage/QuizPage'
+import { countReset } from 'console';
 
 interface IProps{
   countries: {
@@ -11,10 +12,14 @@ interface IProps{
 }
 
 const Map: React.FC<IProps> = ( {countries} ) => {
-  console.log(countries)
+  
+const getSelectedCountry = () => {
+ const currentCountry = countries.filter(country => country.name === 'Afghanistan')
+ return currentCountry;
+}
   return (
     <div>
-       <QuizPage questions={["What population of", "What is the capital of", "What many countries border"]} currentCountry={Object}/>
+       <QuizPage questions={["What population of", "What is the capital of", "What many countries border"]} currentCountry={getSelectedCountry()}/>
     </div>
   )
 }
