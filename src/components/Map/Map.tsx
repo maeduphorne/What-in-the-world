@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Map.css';
-import App from '../App/App';
+// import App from '../App/App';
 import QuizPage from '../QuizPage/QuizPage'
-import { countReset } from 'console';
+const { v4: uuidv4 } = require('uuid')
 
 interface IProps{
   countries: {
@@ -12,17 +12,35 @@ interface IProps{
 }
 
 const Map: React.FC<IProps> = ( {countries} ) => {
+
+  const [selectedCountry, setSelectedCountry]= useState<string>('')
+
   const countryNames = countries.map(country => {
-   return <option value={country.name}>{country.name}</option>
+   return <option key={uuidv4()} value={country.name}>{country.name}</option>
   })
 
+
+  const getSelectedCountry = () => {
+    const getCurrentCounty = countries.filter(country => country.name.includes('Afghanistan'))
+    return getCurrentCounty
+  }
   return (
     <section>
     <form className="country-selector">
-      <select className="country-dropdown">{countryNames}</select>
+      <select defaultValue={'default'} className="country-dropdown">
+        <option value='default' disabled>Choose a country</option>
+        {countryNames}
+        </select>
       <button className="dropdown-btn">Submit Country</button>
     </form>
-    <QuizPage questions={[]} currentCountry={{}}/>
+    <QuizPage questions={
+      [
+       'What is the population of',
+       'What is the capital of',
+       'How many countries border'
+      ]
+   } 
+    currentCountry={getSelectedCountry()}/>
     </section>
   )
 }
