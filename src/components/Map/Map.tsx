@@ -12,15 +12,15 @@ interface IProps{
 }
 
 const Map: React.FC<IProps> = ( {countries} ) => {
-  
-const getSelectedCountry = () => {
- const currentCountry = countries.filter(country => country.name === 'Afghanistan')
- return currentCountry;
-}
+  const countryNames = countries.map(country => {
+   return <option value={country.name}>{country.name}</option>
+  })
+
   return (
-    <div>
-       <QuizPage questions={["What population of", "What is the capital of", "What many countries border"]} currentCountry={getSelectedCountry()}/>
-    </div>
+    <form className="country-selector">
+      <select className="country-dropdown">{countryNames}</select>
+      <button className="dropdown-btn">Submit Country</button>
+    </form>
   )
 }
 
