@@ -1,27 +1,35 @@
-import { get } from 'https';
-import React, {useState} from 'react';
-// import './Quiz.css';
+
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
-interface IState {
-  questions:Array<String> | String
+interface IState{
+  questions:Array<string>
   currentCountry: Object
 }
 
-const QuizPage = ({questions, currentCountry}:IState) => {
-  const [quizQuestions, setQuestion] = useState('')
-  const [country, setCountry] = useState({})
+const QuizPage: React.FC<IState> = ({questions}) => {
+  const [quizQuestions, setQuiz] = useState('')
 
-  const getRandomElement = (questions:any[]) => {
+
+  const getRandomElement = () => {
     const result = questions[Math.floor(Math.random() * questions.length)]
-    setQuestion(result)
+    setQuiz((result))
   }
 
-
+  useEffect(() => {
+   if(!quizQuestions) {
+     getRandomElement()
+   }
+  })
+  
+    
+  
  
   return (
     <div>
-     <h1>{quizQuestions}</h1>
+     <section>
+     <h2>{quizQuestions}</h2>
+     </section>
     </div>
   )
 }
