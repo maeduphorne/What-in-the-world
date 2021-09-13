@@ -16,10 +16,11 @@ function App() {
   const [countries, setCountries] = useState<IState['countries']>([])
   
   useEffect(() => {
-    apiCalls.fetchCountriesData()
-    .then((data) => setCountries(data))
-    console.log(countries)
-  }, []);
+    if (!countries.length) {
+      apiCalls.fetchCountriesData()
+      .then((data) => setCountries(data))
+    }
+  })
   
 
   // const countryNames = countries?.map(country => country.name)
