@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Form.css';
 
-const Form = () => {
+interface IState{
+  questions:Array<string> | string
+  currentCountry: {
+    name: string
+  } | undefined
+}
 
+const Form:React.FC <IState> = ({ questions }) => {
   return (
     <div>
       Hello World

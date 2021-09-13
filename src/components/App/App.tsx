@@ -13,11 +13,13 @@ interface IState{
 }
 
 function App() {
-  const [countries, setCountries] = useState <IState["countries"]>([])
+  const [countries, setCountries] = useState<IState['countries']>([])
   
   useEffect(() => {
-    apiCalls.fetchCountriesData()
-    .then((data) => setCountries(data))
+    if (!countries.length) {
+      apiCalls.fetchCountriesData()
+      .then((data) => setCountries(data))
+    }
   })
   
 
