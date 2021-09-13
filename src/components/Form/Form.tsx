@@ -9,7 +9,6 @@ interface IState{
 }
 
 const Form:React.FC <IState> = ({ questions }) => {
- const [question, setQuestion] = useState('')
   return (
     <div>
       Hello World

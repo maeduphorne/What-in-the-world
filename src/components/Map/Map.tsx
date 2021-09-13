@@ -13,34 +13,43 @@ interface IProps{
 
 const Map: React.FC<IProps> = ( {countries} ) => {
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
+  
   const [displayCountry, setDisplayCountry] = useState<boolean>(false)
   const countryNames = countries.map(country => { 
     return <option key={uuidv4()}>{country.name}</option>
   })
 
- const getCurrentCountry = () => {
+   // ********* Function to get chosen country for QuizPage component ********//
+   const getCurrentCountry = () => {
    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
    return country;
- }
-
-  const handleSubmit = (e:any) => {
+  }
+   // ******* Button click function  ********//
+   const handleSubmit = (e:any) => {
    e.preventDefault()
-  if(getCurrentCountry()) {
+    if(getCurrentCountry()) {
     setDisplayCountry(true)
   }
-  }
+ }
 
   return (
-    <section>
-    <form className="country-selector">
-      <select 
-      className="country-dropdown"
-      onChange={(e) => setSelectedCountry(e.target.value)}>
-      <option value="">{selectedCountry}</option>
-      options={countryNames}
+    <>
+    <form 
+      className="country-selector">
+     <select 
+       className="country-dropdown"
+       onChange={(e) => setSelectedCountry(e.target.value)}>
+       <option value="">
+        {selectedCountry}
+       </option>
+       options={countryNames}
         </select>
-      <button  onClick={(e) => handleSubmit(e)} className="dropdown-btn">Submit Country</button>
+       <button onClick={(e) => handleSubmit(e)} 
+       className="dropdown-btn">
+       Submit Country
+       </button>
     </form>
+
     {displayCountry && <QuizPage questions={
       [
        'What is the population of',
@@ -49,7 +58,7 @@ const Map: React.FC<IProps> = ( {countries} ) => {
       ]
    } 
     currentCountry={getCurrentCountry()}/>}
-    </section>
+    </>
   )
 }
 
