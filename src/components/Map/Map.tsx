@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Map.css';
 import QuizPage from '../QuizPage/QuizPage'
+import { isConstructorDeclaration } from 'typescript';
 const { v4: uuidv4 } = require('uuid')
 // this npm package helps us to set unique keys for components
 
@@ -13,17 +14,26 @@ interface IProps{
 
 const Map: React.FC<IProps> = ( {countries} ) => {
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
-
+  const [displayCountry, setDisplayCountry] = useState<boolean>(false)
   const countryNames = countries.map(country => { 
     return <option key={uuidv4()}>{country.name}</option>
   })
 
  const getCurrentCountry = () => {
    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
-
-   
    return country;
  }
+
+  const handleSubmit = (e:any) => {
+   e.preventDefault()
+  if(getCurrentCountry()) {
+    setDisplayCountry(true)
+  }else {
+    setDisplayCountry(false)
+  }
+  
+  
+  }
 
   return (
     <section>
@@ -34,16 +44,16 @@ const Map: React.FC<IProps> = ( {countries} ) => {
       <option value="">{selectedCountry}</option>
       options={countryNames}
         </select>
-      <button className="dropdown-btn">Submit Country</button>
+      <button  onClick={(e) => handleSubmit(e)} className="dropdown-btn">Submit Country</button>
     </form>
-    <QuizPage questions={
+    {displayCountry && <QuizPage questions={
       [
        'What is the population of',
        'What is the capital of',
        'How many countries border'
       ]
    } 
-    currentCountry={getCurrentCountry()}/>
+    currentCountry={getCurrentCountry()}/>}
     </section>
   )
 }
