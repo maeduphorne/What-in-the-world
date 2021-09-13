@@ -13,15 +13,10 @@ interface IProps{
 
 const Map: React.FC<IProps> = ( {countries} ) => {
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
-  // const value = selectedCountry && selectedCountry.value;
-
 
   const countryNames = countries.map(country => { 
     return <option key={uuidv4()}>{country.name}</option>
   })
-
-
- //// this methos is checking if given country name exist in array of all countries.//////
 
  const getCurrentCountry = () => {
    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
