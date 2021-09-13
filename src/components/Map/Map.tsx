@@ -10,10 +10,15 @@ interface IProps{
 }
 
 const Map: React.FC<IProps> = ( {countries} ) => {
+  const countryNames = countries.map(country => {
+   return <option value={country.name}>{country.name}</option>
+  })
+
   return (
-    <div>
-        Hello I'm in Map!
-    </div>
+    <form className="country-selector">
+      <select className="country-dropdown">{countryNames}</select>
+      <button className="dropdown-btn">Submit Country</button>
+    </form>
   )
 }
 
