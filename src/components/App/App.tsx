@@ -1,20 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
-import Map from '../Map/Map';
+// import Map from '../Map/Map';
+// import QuizPage from '../QuizPage/QuizPage';
 import apiCalls from '../../api/apiCalls';
+const { v4: uuidv4 } = require('uuid')
+
 
 interface IState{
   countries: {
     name: string
     population: number
-  }[]
+  }[],
+  questions:Array<string> | string
+  currentCountry: {
+    name: string
+  } | undefined
 }
 
 function App() {
-  const [countries, setCountries] = useState<IState['countries']>([])
+  const [countries, setCountries] = useState<IState['countries']>([]);
+  const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
+  const [displayCountry, setDisplayCountry] = useState<any>({})
+
+  const countryNames = countries.map(country => { 
+    return <option key={uuidv4()}>{country.name}</option>
+  })
   
+     // ********* Function to get chosen country for QuizPage component ********//
+  const getCurrentCountry = () => {
+    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
+    console.log('inside getCurrentCountry', country)
+    setDisplayCountry(country);
+  }
+
+        // ******* Button click function  ********//
+  const handleSubmit = (e:any) => {
+    e.preventDefault()
+    console.log('inside handleSubmit', selectedCountry);
+    getCurrentCountry()
+  }
+ 
   useEffect(() => {
     if (!countries.length) {
       apiCalls.fetchCountriesData()
@@ -22,7 +49,6 @@ function App() {
     }
   })
   
-
   // const countryNames = countries?.map(country => country.name)
 
   return (
@@ -30,12 +56,42 @@ function App() {
       <header>
         <h1>What In The World</h1>
       </header>
-      <Link to="/" >
-        <main className="mainDisplay">
-          <Map countries={countries}/>
-          <img src={mapIcon} alt="world map" className="worldMapImg" />
-        </main>
-      </Link>
+      <Route exact path="/" render={ () => {
+        return (
+          <main className="mainDisplay">
+            <>
+            <form 
+              className="country-selector">
+              <select 
+                className="country-dropdown"
+                onChange={(e) => setSelectedCountry(e.target.value)}>
+                  <option value="">
+                    {selectedCountry}
+                  </option>
+                options={countryNames}
+              </select>
+              <button onClick={(e) => handleSubmit(e)} 
+                className="dropdown-btn">
+                Submit Country
+              </button>
+            </form>
+            </>
+            <img src={mapIcon} alt="world map" className="worldMapImg" />
+          </main>
+        )
+      }
+      }/>
+      {/* <Route exact path="/:country" render={ ({match: any}) => {
+        return <QuizPage 
+          questions={[
+            'What is the population of',
+            'What is the capital of',
+            'How many countries border'
+          ]} 
+          currentCountry={displayCountry}
+          />
+      }
+    }/> */}
     </div>
   );
 }
