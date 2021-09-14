@@ -55,7 +55,7 @@ function App() {
       apiCalls.fetchCountriesData()
       .then((data) => setCountries(data))
     }
-    
+   // try using an empty array on line 59 after the closing curly. This may let us get rid of the conditional! 
   })
   
   // const countryNames = countries?.map(country => country.name)
