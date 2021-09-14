@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
 // import Map from '../Map/Map';
-// import QuizPage from '../QuizPage/QuizPage';
+import QuizPage from '../QuizPage/QuizPage';
 import apiCalls from '../../api/apiCalls';
 const { v4: uuidv4 } = require('uuid')
 
@@ -17,6 +17,7 @@ interface IState{
   currentCountry: {
     name: string
   } | undefined
+  country: string
 }
 
 function App() {
@@ -25,7 +26,14 @@ function App() {
   const [displayCountry, setDisplayCountry] = useState<any>({})
 
   const countryNames = countries.map(country => { 
-    return <option key={uuidv4()}>{country.name}</option>
+    return (
+      
+        <option 
+          key={uuidv4()}
+          >{country.name}
+        </option> 
+      
+    )
   })
   
      // ********* Function to get chosen country for QuizPage component ********//
@@ -47,6 +55,7 @@ function App() {
       apiCalls.fetchCountriesData()
       .then((data) => setCountries(data))
     }
+    
   })
   
   // const countryNames = countries?.map(country => country.name)
@@ -54,7 +63,9 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>What In The World</h1>
+        <Link to="/">
+          <h1>What In The World</h1>
+        </Link>
       </header>
       <Route exact path="/" render={ () => {
         return (
@@ -70,10 +81,12 @@ function App() {
                   </option>
                 options={countryNames}
               </select>
-              <button onClick={(e) => handleSubmit(e)} 
-                className="dropdown-btn">
-                Submit Country
-              </button>
+              {/* <Link to={`/${selectedCountry}`}> */}
+                <button onClick={(e) => handleSubmit(e)} 
+                  className="dropdown-btn">
+                  Submit Country
+                </button>
+              {/* </Link> */}
             </form>
             </>
             <img src={mapIcon} alt="world map" className="worldMapImg" />
@@ -81,17 +94,19 @@ function App() {
         )
       }
       }/>
-      {/* <Route exact path="/:country" render={ ({match: any}) => {
+      <Route exact path="/:country" render={ ({ match }) => {
         return <QuizPage 
+          // {...match}
           questions={[
             'What is the population of',
             'What is the capital of',
             'How many countries border'
           ]} 
           currentCountry={displayCountry}
+          country={displayCountry.name}
           />
       }
-    }/> */}
+    }/>
     </div>
   );
 }
