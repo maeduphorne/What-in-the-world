@@ -81,12 +81,14 @@ function App() {
                   </option>
                 options={countryNames}
               </select>
-              {/* <Link to={`/${selectedCountry}`}> */}
+              
                 <button onClick={(e) => handleSubmit(e)} 
                   className="dropdown-btn">
+                  <Link to={`/${selectedCountry}`}>
                   Submit Country
+                  </Link>
                 </button>
-              {/* </Link> */}
+              
             </form>
             </>
             <img src={mapIcon} alt="world map" className="worldMapImg" />
