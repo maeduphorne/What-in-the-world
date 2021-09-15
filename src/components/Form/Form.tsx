@@ -10,9 +10,9 @@ interface IState{
 
 const Form:React.FC <IState> = ({ questions }) => {
   return (
-    <div>
-      Hello World
-    </div>
+    <form>
+      <input className='answer-input' name='answer' value=''/>
+    </form>
   )
 }
 
