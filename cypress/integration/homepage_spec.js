@@ -14,8 +14,6 @@ describe('Main Page Render', () => {
             .should('be.visible')
             .should('have.value', '')
             .contains('option')
-            
-            // .should()
         })
         
     // should be able to select a country and submit the country on button click 
@@ -23,8 +21,6 @@ describe('Main Page Render', () => {
         cy.get('.country-dropdown')
             .select('Uzbekistan')
             .should('be.visible')
-            // .click('country-submit')
-            // .should('have.value', 'Uzbekistan')
     })
 
     it('Should be able to select a country, should update url to matching path and display country Quiz Page', () => {
