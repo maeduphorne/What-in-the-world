@@ -9,6 +9,7 @@ interface IState{
 }
 
 const Form:React.FC <IState> = ({ questions, currentCountry}) => {
+  const [anser,setAnswer] = useState<string | number>('')
   return (
     <form>
       <input className='answer-input' name='answer' value=''/>
