@@ -2,39 +2,39 @@ import React, { useEffect } from 'react';
 import './Answers.css';
 
 interface Iprops{
-  question: string
+  questions: string
   guess: string | number
-  country: {
+  currentCountry: {
     name: string
     population: number
     capital: string
     borders: string[]
-  }
+  } 
 }
 
-const Answers: React.FC<Iprops> = ({ country, question, guess }) => {
+const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
   const checkPopulation = () => {
-    if (guess < country.population + 100000 || guess > country.population - 100000) {
-      return `Correct! The population of ${country.name} is ${country.population}!`
+    if (guess < currentCountry.population + 100000 || guess > currentCountry.population - 100000) {
+      return `Correct! The population of ${currentCountry.name} is ${currentCountry.population}!`
     } else {
-      return `Incorrect- the population of ${country.name} is ${country.population}.`
+      return `Incorrect- the population of ${currentCountry.name} is ${currentCountry.population}.`
     }
   }
 
   const checkCapital = () => {
-    if (guess === country.capital) {
-      return `Correct! The capital of ${country.name} is ${country.capital}! `
+    if (guess === currentCountry.capital) {
+      return `Correct! The capital of ${currentCountry.name} is ${currentCountry.capital}! `
     } else {
-      return `Incorrect- the capital of ${country.name} is ${country.capital}.`
+      return `Incorrect- the capital of ${currentCountry.name} is ${currentCountry.capital}.`
     }
   }
 
   const checkBorders = () => {
-    if (guess === country.borders.length) {
-      return `Correct! ${country.name} shares a border with ${country.borders.length} countries!`;
+    if (guess === currentCountry.borders.length) {
+      return `Correct! ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries!`;
     } else {
-      return `Incorrect- ${country.name} shares a border with ${country.borders.length} countries.`;
+      return `Incorrect- ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries.`;
     }
   }
 
@@ -49,7 +49,7 @@ const Answers: React.FC<Iprops> = ({ country, question, guess }) => {
   }
 
   useEffect(() => {
-    findAnswer(question)
+    findAnswer(questions)
   }, [])
 
   return (
