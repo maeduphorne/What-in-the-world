@@ -8,6 +8,9 @@ interface IState{
     name: string
     population: number
     capital: string
+    flag: string
+    subregion: string
+    
     borders: string[]
   } 
 }
