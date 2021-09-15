@@ -12,7 +12,7 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
   const [answer,setAnswer] = useState<string | number>('')
   return (
     <form>
-      <input className='answer-input' name='answer' value={answer}/>
+      <input className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value) }/>
       <button className='submit-button'> Submit Answer</button>
     </form>
   )
