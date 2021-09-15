@@ -26,7 +26,7 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
   }
   return (
     <div>
-      { isSubmitted && <Answer guess={answer} currentCountry={currentCountry} questions={questions}/> }
+      { (isSubmitted && answer) && <Answer guess={answer} currentCountry={currentCountry} questions={questions}/> }
       { !isSubmitted && (
       <form>
         <input className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value) } required />

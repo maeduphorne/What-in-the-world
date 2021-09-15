@@ -31,7 +31,7 @@ const QuizPage: React.FC<IState> = ({ currentCountry }) => {
   return (
     <div>
       <section>
-        {currentCountry && <h2>`${questions} ${currentCountry.name}?`</h2>}
+        {currentCountry && <h2>{questions} {currentCountry.name}?</h2>}
         {currentCountry && <Form questions={`${questions} ${currentCountry.name}?`} currentCountry={currentCountry}/>}
       </section>
     </div>
