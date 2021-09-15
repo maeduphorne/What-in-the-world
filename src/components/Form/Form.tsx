@@ -9,10 +9,10 @@ interface IState{
 }
 
 const Form:React.FC <IState> = ({ questions, currentCountry}) => {
-  const [anser,setAnswer] = useState<string | number>('')
+  const [answer,setAnswer] = useState<string | number>('')
   return (
     <form>
-      <input className='answer-input' name='answer' value=''/>
+      <input className='answer-input' name='answer' value={answer}/>
       <button className='submit-button'> Submit Answer</button>
     </form>
   )
