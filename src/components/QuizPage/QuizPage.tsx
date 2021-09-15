@@ -2,35 +2,37 @@ import React, {useEffect, useState} from 'react';
 import Form from '../Form/Form'
 
 interface IState{
-  questions:Array<string> | string
   currentCountry: {
     name: string
-  } | undefined
+    population: number
+    capital: string
+    borders: string[]
+  } 
   country: string
-  // question: string
 }
 
-const QuizPage: React.FC<IState> = ({questions, currentCountry}) => {
-  const [quizQuestion, setQuiz] = useState<IState['questions']>('')
-  const [country, setCountry] = useState<IState['currentCountry']>()
 
+const QuizPage: React.FC<IState> = ({ currentCountry }) => {
+  const [questions, setQuestions] = useState< string[] | string > ([
+    'What is the population of',
+    'What is the capital of',
+    'How many countries border'
+  ])
    // ********* Randomizer ********//
   const getRandomElement = () => {
     const result = questions[Math.floor(Math.random() * questions.length)]
-    setQuiz((result))
+    setQuestions((result))
   }
 
   useEffect(() =>{
-    if(!quizQuestion) {
       getRandomElement()
-    }
-  }, [quizQuestion])
+  }, [])
   
   return (
     <div>
       <section>
-        {currentCountry && <h2>{quizQuestion} {currentCountry.name}</h2>}
-        {currentCountry && <Form questions={`${quizQuestion} ${currentCountry.name}`} currentCountry={currentCountry}/>}
+        {currentCountry && <h2>`${questions} ${currentCountry.name}?`</h2>}
+        {currentCountry && <Form questions={`${questions} ${currentCountry.name}?`} currentCountry={currentCountry}/>}
       </section>
     </div>
   )
