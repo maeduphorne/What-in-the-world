@@ -3,27 +3,37 @@ import Answer from '../Answers/Answers'
 import './Form.css';
 
 interface IState{
-  questions:Array<string> | string
+  questions: string
   currentCountry: {
     name: string
-  } | undefined
+    population: number
+    capital: string
+    borders: string[]
+  } 
 }
 
 const Form:React.FC <IState> = ({ questions, currentCountry}) => {
-  const [answer,setAnswer] = useState<string | number>('')
+  const [answer,setAnswer] = useState<string | number>('');
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const handleSubmit = (e:any) => {
-   e.preventDefault()
-   console.log('i am clicking')
+    e.preventDefault()
+    console.log('i am clicking')
+    setIsSubmitted(true)
   //  return (
-  //    <Answer answer={answer}/>
+  //    <Answer guess={answer}/>
   //  )
   }
   return (
-    <form>
-      <input className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value) }/>
-      <button className='submit-button' onClick={handleSubmit}>Submit Answer</button>
-    </form>
+    <div>
+      { isSubmitted && <Answer guess={answer} currentCountry={currentCountry} questions={questions}/> }
+      { !isSubmitted && (
+      <form>
+        <input className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value) } required />
+        <button className='submit-button' onClick={handleSubmit}>Submit Answer</button>
+      </form>
+      )}
+    </div>
   )
 }
 
