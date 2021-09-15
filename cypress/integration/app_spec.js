@@ -1,9 +1,3 @@
-// describe('User App Main Page Flows', () => {
-//     beforeEach(() => {
-//     cy.visit('http://localhost:3000/')
-//     })
-// });
-
 describe('Main Page Render', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000/')
@@ -31,6 +25,13 @@ describe('Main Page Render', () => {
             .should('be.visible')
             // .click('country-submit')
             // .should('have.value', 'Uzbekistan')
+    })
 
+    it('Should be able to select a country, should update url to matching path and display country Quiz Page', () => {
+        cy.get('.country-dropdown')
+            .select('Uzbekistan')
+            .get('.country-submit').click()
+            .url().should('eq', 'http://localhost:3000/Uzbekistan')
+            .url().should('not.eq', 'http://localhost:3000/');
     })
 })
