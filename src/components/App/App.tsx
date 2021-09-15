@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, Route } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
-// import Map from '../Map/Map';
 import QuizPage from '../QuizPage/QuizPage';
 import apiCalls from '../../api/apiCalls';
+import { stringify } from 'querystring';
 const { v4: uuidv4 } = require('uuid')
 
 
@@ -13,29 +13,28 @@ interface IState{
     name: string
     population: number
   }[],
-  questions:Array<string> | string
   currentCountry: {
     name: string
+    population: number
+    capital: string
+    borders: string[]
   } | undefined
   country: string
 }
 
-function App() {
+const App = () => {
   const [countries, setCountries] = useState<IState['countries']>([]);
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
   const [displayCountry, setDisplayCountry] = useState<any>({})
 
   const countryNames = countries.map(country => { 
     return (
-      
-        <option 
-          key={uuidv4()}
-          >{country.name}
-        </option> 
-      
+      <option 
+        key={uuidv4()}
+        >{country.name}
+      </option> 
     )
   })
-  
      // ********* Function to get chosen country for QuizPage component ********//
   const getCurrentCountry = () => {
     const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
@@ -49,16 +48,11 @@ function App() {
     console.log('inside handleSubmit', selectedCountry);
     getCurrentCountry()
   }
- 
+
   useEffect(() => {
-    if (!countries.length) {
-      apiCalls.fetchCountriesData()
+    apiCalls.fetchCountriesData()
       .then((data) => setCountries(data))
-    }
-   // try using an empty array on line 59 after the closing curly. This may let us get rid of the conditional! 
-  })
-  
-  // const countryNames = countries?.map(country => country.name)
+  }, [])
 
   return (
     <div className="App">
@@ -99,11 +93,7 @@ function App() {
       <Route exact path="/:country" render={ ({ match }) => {
         return <QuizPage 
           // {...match}
-          questions={[
-            'What is the population of',
-            'What is the capital of',
-            'How many countries border'
-          ]} 
+          
           currentCountry={displayCountry}
           country={displayCountry.name}
           />
