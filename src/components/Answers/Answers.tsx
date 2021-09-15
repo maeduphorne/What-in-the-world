@@ -8,7 +8,10 @@ interface Iprops{
     name: string
     population: number
     capital: string
+    subregion: string
+    
     borders: string[]
+    flag: string
   } 
 }
 
@@ -55,15 +58,27 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }, [])
 
   return (
-    <article className="answer-display">
+    <article 
+      className="answer-display"
+      style={
+        { backgroundImage: `url(${currentCountry.flag})` }
+      }>
       <p>
         Your guess was {guess}
       </p>
       <p>
         {answer}
       </p>
+      <section className="extra-facts">
+        {/* <img src={currentCountry.flag} alt={`${currentCountry.name} flag`} className="flag-img" /> */}
+        <p>
+          {currentCountry.name} is located in {currentCountry.subregion}.
+        </p>
+      </section>
     </article>
   )
 }
 
 export default Answers;
+
+//We need to destructure currency and languages out of the data to display within the extra facts section
