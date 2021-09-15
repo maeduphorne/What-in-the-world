@@ -13,8 +13,8 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
   const [answer,setAnswer] = useState<string | number>('')
 
   const handleSubmit = (e:any) => {
-   e.preventDefault()
-   console.log('i am clicking')
+    e.preventDefault()
+    console.log('i am clicking')
   //  return (
   //    <Answer answer={answer}/>
   //  )
