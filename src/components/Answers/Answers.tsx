@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Answers.css';
 
 interface Iprops{
@@ -14,39 +14,43 @@ interface Iprops{
 
 const Answers: React.FC<Iprops> = ({ country, question, guess }) => {
 
-  const checkPopulation = (userGuess: number) => {
-    if (userGuess < country.population + 100000 || userGuess > country.population -100000) {
+  const checkPopulation = () => {
+    if (guess < country.population + 100000 || guess > country.population - 100000) {
       return `Correct! The population of ${country.name} is ${country.population}!`
     } else {
       return `Incorrect- the population of ${country.name} is ${country.population}.`
     }
   }
 
-  const checkCapital = (userGuess: string) => {
-    if (userGuess === country.capital) {
+  const checkCapital = () => {
+    if (guess === country.capital) {
       return `Correct! The capital of ${country.name} is ${country.capital}! `
     } else {
       return `Incorrect- the capital of ${country.name} is ${country.capital}.`
     }
   }
 
-  const checkBorders = (userGuess: number) => {
-    if (userGuess === country.borders.length) {
+  const checkBorders = () => {
+    if (guess === country.borders.length) {
       return `Correct! ${country.name} shares a border with ${country.borders.length} countries!`;
     } else {
       return `Incorrect- ${country.name} shares a border with ${country.borders.length} countries.`;
     }
   }
 
-  const findAnswer = (question, guess) => {
-    if (question === `What is the population of ${country.name}?`) {
-      checkPopulation(guess);
-    } else if (question === `What is the capital of ${country.name}?`) {
-      checkCapital(guess);
-    } else if ( question === `How many countries border ${country.name}?`) {
-      checkBorders(guess);
+  const findAnswer = (quizQuestion: string) => {
+    if (quizQuestion.includes(`population`)) {
+      checkPopulation();
+    } else if (quizQuestion.includes(`capital`)) {
+      checkCapital();
+    } else if (quizQuestion.includes(`border`)) {
+      checkBorders();
     }
   }
+
+  useEffect(() => {
+    findAnswer(question)
+  }, [])
 
   return (
     <div>
