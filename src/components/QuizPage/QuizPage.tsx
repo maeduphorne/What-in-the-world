@@ -45,4 +45,4 @@ export default QuizPage;
 // // write helper function that compares input values to country object, set state for 'quizResults' and pass 'quizResults' as prop to Answers Component
 // // Testing needed
 
-// // [ ] Need to add Link Router to take user to a QuizPage component but not render on main page
+// // [X] Need to add Link Router to take user to a QuizPage component but not render on main page
