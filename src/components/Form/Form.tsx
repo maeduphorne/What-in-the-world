@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Answer from '../Answers/Answers'
 import './Form.css';
 
 interface IState{
@@ -10,10 +11,19 @@ interface IState{
 
 const Form:React.FC <IState> = ({ questions, currentCountry}) => {
   const [answer,setAnswer] = useState<string | number>('')
+
+  const handleSubmit = (e:any) => {
+   e.preventDefault()
+   return (
+     <>
+     <Answer answer={answer}/>
+     </>
+   )
+  }
   return (
     <form>
       <input className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value) }/>
-      <button className='submit-button'> Submit Answer</button>
+      <button className='submit-button' onClick={handleSubmit}>Submit Answer</button>
     </form>
   )
 }
