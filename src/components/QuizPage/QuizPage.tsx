@@ -7,6 +7,7 @@ interface IState{
     name: string
   } | undefined
   country: string
+  // question: string
 }
 
 const QuizPage: React.FC<IState> = ({questions, currentCountry}) => {
