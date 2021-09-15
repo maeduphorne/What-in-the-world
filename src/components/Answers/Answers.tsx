@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Answers.css';
 
 interface Iprops{
@@ -14,27 +14,29 @@ interface Iprops{
 
 const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
+  const [answer, setAnswer] = useState<string>('')
+
   const checkPopulation = () => {
-    if (guess < currentCountry.population + 100000 || guess > currentCountry.population - 100000) {
-      return `Correct! The population of ${currentCountry.name} is ${currentCountry.population}!`
+    if (guess < currentCountry.population + 50000 || guess > currentCountry.population - 50000) {
+      setAnswer(`Correct! The population of ${currentCountry.name} is ${currentCountry.population}!`);
     } else {
-      return `Incorrect- the population of ${currentCountry.name} is ${currentCountry.population}.`
+      setAnswer(`Incorrect- the population of ${currentCountry.name} is ${currentCountry.population}.`);
     }
   }
 
   const checkCapital = () => {
     if (guess === currentCountry.capital) {
-      return `Correct! The capital of ${currentCountry.name} is ${currentCountry.capital}! `
+      setAnswer(`Correct! The capital of ${currentCountry.name} is ${currentCountry.capital}! `);
     } else {
-      return `Incorrect- the capital of ${currentCountry.name} is ${currentCountry.capital}.`
+      setAnswer(`Incorrect- the capital of ${currentCountry.name} is ${currentCountry.capital}.`);
     }
   }
 
   const checkBorders = () => {
     if (guess === currentCountry.borders.length) {
-      return `Correct! ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries!`;
+      setAnswer(`Correct! ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries!`);
     } else {
-      return `Incorrect- ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries.`;
+      setAnswer(`Incorrect- ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries.`);
     }
   }
 
@@ -53,9 +55,14 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }, [])
 
   return (
-    <div>
-      Hello World
-    </div>
+    <article className="answer-display">
+      <p>
+        Your guess was {guess}
+      </p>
+      <p>
+        {answer}
+      </p>
+    </article>
   )
 }
 
