@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Answer from '../Answers/Answers'
 import './Form.css';
 
 interface IState{
@@ -8,16 +9,26 @@ interface IState{
   } | undefined
 }
 
-const Form:React.FC <IState> = ({ questions }) => {
+const Form:React.FC <IState> = ({ questions, currentCountry}) => {
+  const [answer,setAnswer] = useState<string | number>('')
+
+  const handleSubmit = (e:any) => {
+   e.preventDefault()
+   console.log('i am clicking')
+  //  return (
+  //    <Answer answer={answer}/>
+  //  )
+  }
   return (
-    <div>
-      Hello World
-    </div>
+    <form>
+      <input className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value) }/>
+      <button className='submit-button' onClick={handleSubmit}>Submit Answer</button>
+    </form>
   )
 }
 
 export default Form;
-//Holds a label of the question, an input field set to number | string, and a submit button
-// will need a handleChange function and handleClick function
+// [X]Holds a label of the question, an input field set to number | string, and a submit button
+// [x]will need a handleChange function and handleClick function
 // This will then route to Answers Component on click
 // testing needed

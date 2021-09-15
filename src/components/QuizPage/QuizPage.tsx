@@ -10,7 +10,7 @@ interface IState{
 }
 
 const QuizPage: React.FC<IState> = ({questions, currentCountry}) => {
-  const [quizQuestions, setQuiz] = useState<IState['questions']>()
+  const [quizQuestion, setQuiz] = useState<IState['questions']>('')
   const [country, setCountry] = useState<IState['currentCountry']>()
 
    // ********* Randomizer ********//
@@ -20,16 +20,16 @@ const QuizPage: React.FC<IState> = ({questions, currentCountry}) => {
   }
 
   useEffect(() =>{
-    if(!quizQuestions) {
+    if(!quizQuestion) {
       getRandomElement()
     }
-  }, [quizQuestions])
+  }, [quizQuestion])
   
   return (
     <div>
       <section>
-        {currentCountry && <h2>{quizQuestions} {currentCountry.name}</h2>}
-        {currentCountry && <Form questions={questions} currentCountry={currentCountry}/>}
+        {currentCountry && <h2>{quizQuestion} {currentCountry.name}</h2>}
+        {currentCountry && <Form questions={`${quizQuestion} ${currentCountry.name}`} currentCountry={currentCountry}/>}
       </section>
     </div>
   )
@@ -45,4 +45,4 @@ export default QuizPage;
 // // write helper function that compares input values to country object, set state for 'quizResults' and pass 'quizResults' as prop to Answers Component
 // // Testing needed
 
-// // [ ] Need to add Link Router to take user to a QuizPage component but not render on main page
+// // [X] Need to add Link Router to take user to a QuizPage component but not render on main page
