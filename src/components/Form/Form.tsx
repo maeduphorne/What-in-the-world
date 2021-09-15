@@ -8,7 +8,7 @@ interface IState{
   } | undefined
 }
 
-const Form:React.FC <IState> = ({ questions }) => {
+const Form:React.FC <IState> = ({ questions, currentCountry}) => {
   return (
     <form>
       <input className='answer-input' name='answer' value=''/>
