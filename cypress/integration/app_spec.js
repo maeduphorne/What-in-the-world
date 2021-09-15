@@ -9,8 +9,9 @@ describe('Main Page Render', () => {
         cy.visit('http://localhost:3000/')
         });
 
-    it('Should have a header with the App\'s name on page load', () => {
+    it('Should have a header with the App\'s name on page load & an image of a map', () => {
         cy.get('h1').contains('What In The World')
+        cy.get('.worldMapImg').should('be.visible')
     })
 
     // should display a drop down form of countries on load
@@ -24,5 +25,12 @@ describe('Main Page Render', () => {
         })
         
     // should be able to select a country and submit the country on button click 
-    // .select('Uzbekistan').should('be.visible').should(have.value, 'Uzbekistan')
+    it('Should be able to select a country', () => {
+        cy.get('.country-dropdown')
+            .select('Uzbekistan')
+            .should('be.visible')
+            // .click('country-submit')
+            // .should('have.value', 'Uzbekistan')
+
+    })
 })

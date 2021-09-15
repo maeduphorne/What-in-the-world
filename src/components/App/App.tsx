@@ -84,7 +84,7 @@ function App() {
               
                 <button onClick={(e) => handleSubmit(e)} 
                   className="dropdown-btn">
-                  <Link to={`/${selectedCountry}`}>
+                  <Link className= "country-submit" to={`/${selectedCountry}`}>
                   Submit Country
                   </Link>
                 </button>
