@@ -10,7 +10,6 @@ interface IState{
     capital: string
     flag: string
     subregion: string
-    
     borders: string[]
   } 
 }
@@ -21,11 +20,7 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    console.log('i am clicking')
     setIsSubmitted(true)
-  //  return (
-  //    <Answer guess={answer}/>
-  //  )
   }
   return (
     <div>
@@ -41,7 +36,7 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
 }
 
 export default Form;
-// [X]Holds a label of the question, an input field set to number | string, and a submit button
-// [x]will need a handleChange function and handleClick function
-// This will then route to Answers Component on click
 // testing needed
+// error handling needed:
+// Should not submit if input field is left empty
+// If input is left empty and user clicks submit, they should still see the input field (try to implement required data type)

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Route } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
 import QuizPage from '../QuizPage/QuizPage';
 import apiCalls from '../../api/apiCalls';
-import { stringify } from 'querystring';
 const { v4: uuidv4 } = require('uuid')
 
 
@@ -38,14 +37,12 @@ const App = () => {
      // ********* Function to get chosen country for QuizPage component ********//
   const getCurrentCountry = () => {
     const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
-    console.log('inside getCurrentCountry', country)
     setDisplayCountry(country);
   }
 
         // ******* Button click function  ********//
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    console.log('inside handleSubmit', selectedCountry);
     getCurrentCountry()
   }
 
@@ -92,8 +89,6 @@ const App = () => {
       }/>
       <Route exact path="/:country" render={ ({ match }) => {
         return <QuizPage 
-          // {...match}
-          
           currentCountry={displayCountry}
           country={displayCountry.name}
           />
@@ -104,13 +99,9 @@ const App = () => {
 }
 
 export default App;
-// DONE:
-//useEffect on pageload to fetch the country data set the state as an array of objects
-// Pass props down to map { destructure to just send country name}
-//This will display the Map component on pageload
-// the basic layout will be a header with an h1 element
-// a main with <Map /> component and image (image will eventually become the iteractive map.
-
-// TO-DO:
-//We will set up routes to render based on url
 // testing! 
+// error handling that we need: 
+// button should not submit if no country is selected and display an error for user to see
+// Clear out the values on a page refresh 
+// Fetch catch errors and set to state
+// set up a route to handle errors and display error held in state
