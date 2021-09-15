@@ -31,7 +31,11 @@ const Answers: React.FC<Iprops> = ({ country, question, guess }) => {
   }
 
   const checkBorders = (userGuess: number) => {
-
+    if (userGuess === country.borders.length) {
+      return `Correct! ${country.name} shares a border with ${country.borders.length} countries!`;
+    } else {
+      return `Incorrect- ${country.name} shares a border with ${country.borders.length} countries.`;
+    }
   }
 
   const findAnswer = (question, guess) => {
