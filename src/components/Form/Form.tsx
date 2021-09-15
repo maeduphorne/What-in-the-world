@@ -12,6 +12,7 @@ const Form:React.FC <IState> = ({ questions }) => {
   return (
     <form>
       <input className='answer-input' name='answer' value=''/>
+      <button className='submit-button'> Submit Answer</button>
     </form>
   )
 }
