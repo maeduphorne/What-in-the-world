@@ -1,8 +1,11 @@
 import React from 'react';
 import './Answers.css';
 
-const Answers = () => {
+interface IProps {
+  answer: string | number
+}
 
+const Answers:React.FC<IProps> = ({answer}) => {
   return (
     <div>
       Hello World
