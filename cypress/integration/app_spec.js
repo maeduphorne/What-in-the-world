@@ -14,11 +14,15 @@ describe('Main Page Render', () => {
     })
 
     // should display a drop down form of countries on load
-    it('Should display a drop down on load & populate the selections with country names', () => {
+    it('Should display a drop down menu on load', () => {
         cy.get('.country-dropdown')
             .should('be.visible')
+            .should('have.value', '')
             .contains('option')
-        // .select('Uzbekistan').should('be.visible')
-    })
+            
+            // .should()
+        })
+        
     // should be able to select a country and submit the country on button click 
+    // .select('Uzbekistan').should('be.visible').should(have.value, 'Uzbekistan')
 })
