@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
 import QuizPage from '../QuizPage/QuizPage';
@@ -24,7 +25,9 @@ interface IState{
 const App = () => {
   const [countries, setCountries] = useState<IState['countries']>([]);
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
+  const [error, setError] = useState<string>('');
   const [displayCountry, setDisplayCountry] = useState<any>({})
+  const history = useHistory();
 
   const countryNames = countries.map(country => { 
     return (
@@ -40,18 +43,30 @@ const App = () => {
     setDisplayCountry(country);
   }
 
-        // ******* Button click function  ********//
-  const handleSubmit = (e:any) => {
+   // ******* Select error handle  ********//
+  const errorCheck = (e: any) => {
     e.preventDefault()
-    getCurrentCountry()
-    setSelectedCountry('Select A Country')
+    if (selectedCountry.includes('Select A Country')) {
+      setError('Please select a country')
+    } else {
+        handleSubmit(e)
+    }
   }
+
+   // ******* Button click function  ********//
+  const handleSubmit = (e:any) => {
+    getCurrentCountry()
+    history.push(`/${selectedCountry}`)
+    setSelectedCountry('Select A Country') 
+    setError('')
+  }
+
 
   useEffect(() => {
     apiCalls.fetchCountriesData()
       .then((data) => setCountries(data))
   }, [])
-
+  
   return (
     <div className="App">
       <header>
@@ -68,19 +83,16 @@ const App = () => {
               <select 
                 className="country-dropdown"
                 onChange={(e) => setSelectedCountry(e.target.value)}>
-                  <option value='' >
+                  <option value=''>
                    {selectedCountry}
                   </option>
                 options={countryNames}
               </select>
-              
-                <button onClick={(e) => handleSubmit(e)} 
+                <button onClick={(e) => errorCheck(e)} 
                   className="dropdown-btn">
-                  <Link className= "country-submit" to={`/${selectedCountry}`}>
                   Submit Country
-                  </Link>
                 </button>
-              
+              {error !== '' && <p>{error}</p>}
             </form>
             </>
             <img src={mapIcon} alt="world map" className="worldMapImg" />
@@ -89,22 +101,17 @@ const App = () => {
       }
       }/>
       <Route exact path="/:country" render={ ({ match }) => {
-        console.log('here',displayCountry)
         return ( 
           <QuizPage 
           currentCountry={displayCountry}
           country={displayCountry.name}
           />)
       }
-    }/>
+    }/> 
+   
+      
     </div>
   );
 }
 
 export default App;
-// testing! 
-// error handling that we need: 
-// button should not submit if no country is selected and display an error for user to see
-// [x]Clear out the values on a page refresh 
-// Fetch catch errors and set to state
-// set up a route to handle errors and display error held in state
