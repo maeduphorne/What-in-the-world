@@ -27,7 +27,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }
 
   const checkCapital = () => {
-    if (guess.toUpperCase() === currentCountry.capital.toUpperCase()) {
+    if (guess[0].toUpperCase() === currentCountry.capital.toUpperCase()) {
       setAnswer(`Correct! The capital of ${currentCountry.name} is ${currentCountry.capital}! `);
     } else {
       setAnswer(`Incorrect- the capital of ${currentCountry.name} is ${currentCountry.capital}.`);
