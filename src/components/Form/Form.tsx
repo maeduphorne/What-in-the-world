@@ -15,7 +15,7 @@ interface IState{
 }
 
 const Form:React.FC <IState> = ({ questions, currentCountry}) => {
-  const [answer,setAnswer] = useState<string>();
+  const [answer,setAnswer] = useState<string>('');
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const handleSubmit = (e:any) => {
@@ -31,7 +31,7 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
       { (isSubmitted && answer) && <Answer guess={answer} currentCountry={currentCountry} questions={questions}/> }
       { !isSubmitted && (
       <form>
-        <input type="text" className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value.match(/[A-Za-z0-9]+/g)) } required pattern="[A-Za-z0-9]+" />
+        <input type="text" className='answer-input' name='answer' value={answer} onChange={(e:any) => setAnswer(e.target.value.match(/[A-Za-z0-9]+/)[0]) } required pattern="[A-Za-z0-9]+" />
         <button className='submit-button' onClick={handleSubmit}>Submit Answer</button>
       </form>
       )}
