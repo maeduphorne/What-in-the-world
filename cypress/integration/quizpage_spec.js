@@ -1,6 +1,11 @@
 describe('Quiz Page User Flow', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:3000/Uzbekistan')
+        it('Should select a sountry and move to that country\'s quiz page', () => {
+            cy.get('.country-dropdown')
+                .select('Uzbekistan')
+                .get('.dropdown-btn').click()
+                .url().should('eq', 'http://localhost:3000/Uzbekistan')
+        })
     });
 
     it('Should render a page displaying a quiz question about the selected country & answer field', () => {
@@ -9,6 +14,7 @@ describe('Quiz Page User Flow', () => {
         .get('.answer-input').should('be.visible')
         .get('.submit-button').should('be.visible')
     })
+
 
 
 })
