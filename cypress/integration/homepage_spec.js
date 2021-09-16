@@ -33,4 +33,8 @@ describe('Main Page Render', () => {
             .get('h2').contains('Uzbekistan')
             .get('.answer-input').should('be.visible')
     })
+
+    it('Should create a drop down menu using all country names on page load', () => {
+        cy.intercept('GET', 'https://restcountries.eu/rest/v2/all')
+    })
 })
