@@ -68,8 +68,8 @@ const App = () => {
               <select 
                 className="country-dropdown"
                 onChange={(e) => setSelectedCountry(e.target.value)}>
-                  <option value="">
-                    {selectedCountry}
+                  <option value='' >
+                   {selectedCountry}
                   </option>
                 options={countryNames}
               </select>
@@ -89,10 +89,12 @@ const App = () => {
       }
       }/>
       <Route exact path="/:country" render={ ({ match }) => {
-        return <QuizPage 
+        console.log('here',displayCountry)
+        return ( 
+          <QuizPage 
           currentCountry={displayCountry}
           country={displayCountry.name}
-          />
+          />)
       }
     }/>
     </div>
@@ -103,6 +105,6 @@ export default App;
 // testing! 
 // error handling that we need: 
 // button should not submit if no country is selected and display an error for user to see
-// Clear out the values on a page refresh 
+// [x]Clear out the values on a page refresh 
 // Fetch catch errors and set to state
 // set up a route to handle errors and display error held in state
