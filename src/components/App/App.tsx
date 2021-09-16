@@ -77,7 +77,7 @@ const App = () => {
       <Route exact path="/" render={ () => {
         return (
           <main className="mainDisplay">
-            <>
+            <section>
             <form 
               className="country-selector">
               <select 
@@ -94,7 +94,7 @@ const App = () => {
                 </button>
               {error !== '' && <p>{error}</p>}
             </form>
-            </>
+            </section>
             <img src={mapIcon} alt="world map" className="worldMapImg" />
           </main>
         )
@@ -108,8 +108,6 @@ const App = () => {
           />)
       }
     }/> 
-   
-      
     </div>
   );
 }
