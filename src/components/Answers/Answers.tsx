@@ -3,13 +3,12 @@ import './Answers.css';
 
 interface Iprops{
   questions: string
-  guess: string | number
+  guess: string 
   currentCountry: {
     name: string
     population: number
     capital: string
     subregion: string
-    
     borders: string[]
     flag: string
   } 
@@ -17,10 +16,10 @@ interface Iprops{
 
 const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
-  const [answer, setAnswer] = useState<string>('')
+  const [answer, setAnswer] = useState<string | number>('')
 
   const checkPopulation = () => {
-    if (guess < currentCountry.population + 50000 || guess > currentCountry.population - 50000) {
+    if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
       setAnswer(`Correct! The population of ${currentCountry.name} is ${currentCountry.population}!`);
     } else {
       setAnswer(`Incorrect- the population of ${currentCountry.name} is ${currentCountry.population}.`);
@@ -28,7 +27,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }
 
   const checkCapital = () => {
-    if (guess === currentCountry.capital) {
+    if (guess.toUpperCase() === currentCountry.capital.toUpperCase()) {
       setAnswer(`Correct! The capital of ${currentCountry.name} is ${currentCountry.capital}! `);
     } else {
       setAnswer(`Incorrect- the capital of ${currentCountry.name} is ${currentCountry.capital}.`);
@@ -36,7 +35,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }
 
   const checkBorders = () => {
-    if (guess === currentCountry.borders.length) {
+    if (Number(guess) === currentCountry.borders.length) {
       setAnswer(`Correct! ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries!`);
     } else {
       setAnswer(`Incorrect- ${currentCountry.name} shares a border with ${currentCountry.borders.length} countries.`);
@@ -63,22 +62,22 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
       style={
         { backgroundImage: `url(${currentCountry.flag})` }
       }>
-      <p>
-        Your guess was {guess}
-      </p>
-      <p>
-        {answer}
-      </p>
-      <section className="extra-facts">
-        {/* <img src={currentCountry.flag} alt={`${currentCountry.name} flag`} className="flag-img" /> */}
-        <p>
-          {currentCountry.name} is located in {currentCountry.subregion}.
+      <div className="gradient-container">
+        <p className="user-guess">
+          Your guess was {guess}
         </p>
-      </section>
+        <h3>
+          {answer}
+        </h3>
+        <section className="extra-facts">
+          <p>
+            {currentCountry.name} is located in {currentCountry.subregion}.
+          </p>
+        </section>
+      </div>
     </article>
   )
 }
 
 export default Answers;
 
-//We need to destructure currency and languages out of the data to display within the extra facts section
