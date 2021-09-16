@@ -32,8 +32,8 @@ const QuizPage: React.FC<IState> = ({ currentCountry }) => {
   }, [])
   
   return (
-    <div>
-      <section>
+    <div className="display-area" >
+      <section className="display-area" >
         {currentCountry && <h2>{questions} {currentCountry.name}?</h2>}
         {currentCountry && <Form questions={`${questions} ${currentCountry.name}?`} currentCountry={currentCountry}/>}
       </section>
