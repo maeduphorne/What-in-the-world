@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
@@ -74,40 +74,42 @@ const App = () => {
           <h1>What In The World</h1>
         </Link>
       </header>
-      <Route exact path="/" render={ () => {
-        return (
-          <main className="mainDisplay">
-            <section>
-            <form 
-              className="country-selector">
-              <select 
-                className="country-dropdown"
-                onChange={(e) => setSelectedCountry(e.target.value)}>
-                  <option value=''>
-                   {selectedCountry}
-                  </option>
-                options={countryNames}
-              </select>
-                <button onClick={(e) => errorCheck(e)} 
-                  className="dropdown-btn">
-                  Submit Country
-                </button>
-              {error !== '' && <p>{error}</p>}
-            </form>
-            </section>
-            <img src={mapIcon} alt="world map" className="worldMapImg" />
-          </main>
-        )
-      }
-      }/>
-      <Route exact path="/:country" render={ ({ match }) => {
-        return ( 
-          <QuizPage 
-          currentCountry={displayCountry}
-          country={displayCountry.name}
-          />)
-      }
-    }/> 
+      <Switch>
+        <Route exact path="/" render={ () => {
+          return (
+            <main className="mainDisplay">
+              <section>
+              <form 
+                className="country-selector">
+                <select 
+                  className="country-dropdown"
+                  onChange={(e) => setSelectedCountry(e.target.value)}>
+                    <option value=''>
+                    {selectedCountry}
+                    </option>
+                  options={countryNames}
+                </select>
+                  <button onClick={(e) => errorCheck(e)} 
+                    className="dropdown-btn">
+                    Submit Country
+                  </button>
+                {error !== '' && <p>{error}</p>}
+              </form>
+              </section>
+              <img src={mapIcon} alt="world map" className="worldMapImg" />
+            </main>
+          )
+        }
+        }/>
+        <Route exact path="/:country" render={ ({ match }) => {
+          return ( 
+            <QuizPage 
+            currentCountry={displayCountry}
+            country={displayCountry.name}
+            />)
+          }
+        }/> 
+      </Switch>
     </div>
   );
 }
