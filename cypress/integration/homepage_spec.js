@@ -37,6 +37,7 @@ describe('Main Page Render', () => {
 
 describe('Main page fetch', () => {
     it('Should create a drop down menu using all country names on page load', () => {
+        cy.visit('http://localhost:3000/')
         cy.intercept('GET', 'https://restcountries.eu/rest/v2/all', {
             statusCode: 200,
             body: {
@@ -121,7 +122,9 @@ describe('Main page fetch', () => {
                     ]
                 }
         })
-        // cy.visit('http://localhost:3000/')
-        // .contains()
+        // cy.get('.country-dropdown')
+        cy.get('.country-dropdown').select('Uzbekistan')
+        // .get('option')
+        // .contains('Select a Country')
     }) 
 })
