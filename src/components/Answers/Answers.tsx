@@ -6,6 +6,7 @@ interface Iprops{
   guess: string 
   currentCountry: {
     name: string
+    languages:object[]
     population: number
     capital: string
     subregion: string
@@ -21,7 +22,10 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
   const [answer, setAnswer] = useState<string | number>('')
   const [currency] = currentCountry.currencies
-  console.log(currency)
+  const [lang] = currentCountry.languages
+  const [firstLanguage, seconddaryLanguage, thirdLanguage] = currentCountry.languages
+  console.log('countries with one language', lang)
+  console.log('countries with multiple languages', firstLanguage,seconddaryLanguage,thirdLanguage)
 
   const checkPopulation = () => {
     if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
@@ -77,7 +81,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
         <section className="extra-facts">
           <p>
             {currentCountry.name} is located in {currentCountry.subregion}.
-            It has currency of {currency.name}
+            Country has currency of {currency.name}
 
           </p>
         </section>
