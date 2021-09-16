@@ -44,6 +44,7 @@ const App = () => {
   const handleSubmit = (e:any) => {
     e.preventDefault()
     getCurrentCountry()
+    setSelectedCountry('Select A Country')
   }
 
   useEffect(() => {

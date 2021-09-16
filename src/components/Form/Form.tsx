@@ -22,6 +22,7 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
     e.preventDefault()
     setIsSubmitted(true)
   }
+  
   return (
     <div>
       { (isSubmitted && answer) && <Answer guess={answer} currentCountry={currentCountry} questions={questions}/> }
