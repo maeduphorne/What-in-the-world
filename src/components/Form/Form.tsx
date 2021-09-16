@@ -11,6 +11,9 @@ interface IState{
     flag: string
     subregion: string
     borders: string[]
+    currencies:[{
+      name:string
+    }]
   } 
 }
 

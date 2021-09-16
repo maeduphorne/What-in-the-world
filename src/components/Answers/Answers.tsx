@@ -10,6 +10,9 @@ interface Iprops{
     capital: string
     subregion: string
     borders: string[]
+    currencies:[{
+      name:string
+    }]
     flag: string
   } 
 }
@@ -17,6 +20,8 @@ interface Iprops{
 const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
   const [answer, setAnswer] = useState<string | number>('')
+  const [currency] = currentCountry.currencies
+  console.log(currency)
 
   const checkPopulation = () => {
     if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
@@ -72,6 +77,8 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
         <section className="extra-facts">
           <p>
             {currentCountry.name} is located in {currentCountry.subregion}.
+            It has currency of {currency.name}
+
           </p>
         </section>
       </div>

@@ -8,7 +8,9 @@ interface IState{
     capital: string
     flag: string
     subregion: string
-    
+    currencies:[{
+      name:string
+    }]
     borders: string[]
   } 
   country: string
