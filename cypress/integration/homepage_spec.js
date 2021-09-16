@@ -122,9 +122,10 @@ describe('Main page fetch', () => {
                     ]
                 }
         })
-        // cy.get('.country-dropdown')
         cy.get('.country-dropdown').select('Uzbekistan')
-        // .get('option')
-        // .contains('Select a Country')
+        cy.get('.country-submit').click()
+        .get('h2').contains('Uzbekistan')
+        .get('.answer-input').should('be.visible')
+        .get('.submit-button').should('be.visible')
     }) 
 })
