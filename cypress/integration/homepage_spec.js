@@ -15,7 +15,28 @@ describe('Main Page Render', () => {
             .should('have.value', '')
             .contains('option')
         })
-        
+    
+    it('Should create a drop down menu using all country names on page load', () => {
+        cy.intercept('GET', 'https://restcountries.eu/rest/v2/all', {
+            statusCode: 201,
+            body: {
+                countries: [
+                    {
+                        name: 'Uzbekistan',
+                        population: 120000
+                    },
+                    {
+                        name: 'Barbados',
+                        population: 475685
+                    },
+                    {
+                        name: 'Canada',
+                        population: 19825905
+                    }
+                ]
+            }
+        })
+    })    
     // should be able to select a country and submit the country on button click 
     it('Should be able to select a country', () => {
         cy.get('.country-dropdown')
@@ -34,7 +55,4 @@ describe('Main Page Render', () => {
             .get('.answer-input').should('be.visible')
     })
 
-    it('Should create a drop down menu using all country names on page load', () => {
-        cy.intercept('GET', 'https://restcountries.eu/rest/v2/all')
-    })
 })
