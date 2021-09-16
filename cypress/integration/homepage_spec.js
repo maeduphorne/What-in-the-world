@@ -14,29 +14,7 @@ describe('Main Page Render', () => {
             .should('be.visible')
             .should('have.value', '')
             .contains('option')
-        })
-    
-    it('Should create a drop down menu using all country names on page load', () => {
-        cy.intercept('GET', 'https://restcountries.eu/rest/v2/all', {
-            statusCode: 201,
-            body: {
-                countries: [
-                    {
-                        name: 'Uzbekistan',
-                        population: 120000
-                    },
-                    {
-                        name: 'Barbados',
-                        population: 475685
-                    },
-                    {
-                        name: 'Canada',
-                        population: 19825905
-                    }
-                ]
-            }
-        })
-    })    
+        })   
     // should be able to select a country and submit the country on button click 
     it('Should be able to select a country', () => {
         cy.get('.country-dropdown')
@@ -55,4 +33,95 @@ describe('Main Page Render', () => {
             .get('.answer-input').should('be.visible')
     })
 
+})
+
+describe('Main page fetch', () => {
+    it('Should create a drop down menu using all country names on page load', () => {
+        cy.intercept('GET', 'https://restcountries.eu/rest/v2/all', {
+            statusCode: 200,
+            body: {
+                    countries: 
+                    [
+                        {
+                            "name": "Uzbekistan",
+                            "topLevelDomain": [
+                            ".uz"
+                            ],
+                            "alpha2Code": "UZ",
+                            "alpha3Code": "UZB",
+                            "callingCodes": [
+                            "998"
+                            ],
+                            "capital": "Tashkent",
+                            "altSpellings": [
+                            "UZ",
+                            "Republic of Uzbekistan",
+                            "O‘zbekiston Respublikasi",
+                            "Ўзбекистон Республикаси"
+                            ],
+                            "region": "Asia",
+                            "subregion": "Central Asia",
+                            "population": 31576400,
+                            "latlng": [
+                            41,
+                            64
+                            ],
+                            "demonym": "Uzbekistani",
+                            "area": 447400,
+                            "gini": 36.7,
+                            "timezones": [
+                            "UTC+05:00"
+                            ],
+                            "borders": [
+                            "AFG",
+                            "KAZ",
+                            "KGZ",
+                            "TJK",
+                            "TKM"
+                            ],
+                            "nativeName": "O‘zbekiston",
+                            "numericCode": "860",
+                            "currencies": [
+                            {
+                            "code": "UZS",
+                            "name": "Uzbekistani so'm",
+                            "symbol": null
+                            }
+                            ],
+                            "languages": [
+                            {
+                            "iso639_1": "uz",
+                            "iso639_2": "uzb",
+                            "name": "Uzbek",
+                            "nativeName": "Oʻzbek"
+                            },
+                            {
+                            "iso639_1": "ru",
+                            "iso639_2": "rus",
+                            "name": "Russian",
+                            "nativeName": "Русский"
+                            }
+                            ],
+                            "translations": {
+                            "de": "Usbekistan",
+                            "es": "Uzbekistán",
+                            "fr": "Ouzbékistan",
+                            "ja": "ウズベキスタン",
+                            "it": "Uzbekistan",
+                            "br": "Uzbequistão",
+                            "pt": "Usbequistão",
+                            "nl": "Oezbekistan",
+                            "hr": "Uzbekistan",
+                            "fa": "ازبکستان"
+                            },
+                            "flag": "https://restcountries.eu/data/uzb.svg",
+                            "regionalBlocs": [],
+                            "cioc": "UZB"
+                        }
+                    ]
+                }
+        })
+        // cy.visit('http://localhost:3000/')
+        // .contains()
+    }) 
 })
