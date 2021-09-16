@@ -28,6 +28,9 @@ describe('Main Page Render', () => {
             .select('Uzbekistan')
             .get('.country-submit').click()
             .url().should('eq', 'http://localhost:3000/Uzbekistan')
-            .url().should('not.eq', 'http://localhost:3000/');
+            .url().should('not.eq', 'http://localhost:3000/')
+            .get('h1').contains('What In The World')
+            .get('h2').contains('Uzbekistan')
+            .get('.answer-input').should('be.visible')
     })
 })
