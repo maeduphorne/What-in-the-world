@@ -44,7 +44,7 @@ const App = () => {
   }
 
    // ******* Select error handle  ********//
-  const errorCheck = (e: any) => {
+   const errorCheck = (e: any) => {
     e.preventDefault()
     if (selectedCountry.includes('Select A Country')) {
       setError('Please select a country')
