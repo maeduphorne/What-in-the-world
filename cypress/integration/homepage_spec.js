@@ -25,7 +25,7 @@ describe('Main Page Render', () => {
     it('Should be able to select a country, should update url to matching path and display country Quiz Page', () => {
         cy.get('.country-dropdown')
             .select('Uzbekistan')
-            .get('.country-submit').click()
+            .get('.dropdown-btn').click()
             .url().should('eq', 'http://localhost:3000/Uzbekistan')
             .url().should('not.eq', 'http://localhost:3000/')
             .get('h1').contains('What In The World')
@@ -123,7 +123,7 @@ describe('Main page fetch', () => {
                 }
         })
         cy.get('.country-dropdown').select('Uzbekistan')
-        cy.get('.country-submit').click()
+        cy.get('.dropdown-btn').click()
         .get('h2').contains('Uzbekistan')
         .get('.answer-input').should('be.visible')
         .get('.submit-button').should('be.visible')
