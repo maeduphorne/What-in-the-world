@@ -6,15 +6,30 @@ describe('Quiz Page User Flow', () => {
         // // cy.visit('http://localhost:3000/Uzbekistan')
     })
 
-    
-   
-
-    // it('Should render a page displaying a quiz question about the selected country & answer field', () => {
-    //     cy.get('h1').contains('What In The World')
-    //     .get('h2').contains('Uzbekistan')
-    //     .get('.answer-input').should('be.visible')
-    //     .get('.submit-button').should('be.visible')
-    // })
+    it('Should render a page displaying a quiz question about the selected country & answer field', () => {
+        // cy.get('.country-dropdown')
+        // .select('Uzbekistan')
+        //     .get('.dropdown-btn').click()
+            // .url().should('eq', 'http://localhost:3000/Uzbekistan')
+            // .url().should('not.eq', 'http://localhost:3000/')
+            cy.get('h1').contains('What In The World')
+            const questions = [
+            'What is the population of?',
+            'What is the capital of? ',
+            'How many countries border?'
+           ]
+        
+            const getRandomElement = () => {
+                const result = questions[Math.floor(Math.random() * questions.length)]
+                cy.get('h2').contains(result)    
+                }
+            // cy.get('h2').contains('What is the population of Uzbekistan?')
+            cy.get('.answer-input').should('be.visible')
+        // cy.get('h1').contains('What In The World')
+        // .get('h2').contains('What is the population of?')
+        // .get('.answer-input').should('be.visible')
+        // .get('.submit-button').should('be.visible')
+    })
 
     // // SAD PATH
     // it('Should render an error message & stay on form page if a user enters special characters', () => {
