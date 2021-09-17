@@ -24,7 +24,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
   const [answer, setAnswer] = useState<string | number>('')
   const [currency] = currentCountry.currencies
-  const [languages, setLanguage] = useState<any>('')
+  const [languages, setLanguage] = useState<string[]>()
 
   const checkPopulation = () => {
     if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
