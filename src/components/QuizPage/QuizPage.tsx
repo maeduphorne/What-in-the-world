@@ -4,7 +4,9 @@ import Form from '../Form/Form'
 interface IState{
   currentCountry: {
     name: string
-    languages:object[]
+    languages:[{
+      name:string
+    }]
     population: number
     capital: string
     flag: string
