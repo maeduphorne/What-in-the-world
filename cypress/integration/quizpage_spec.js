@@ -1,7 +1,11 @@
 
 describe('Quiz Page User Flow', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:3000/Uzbekistan')
+        cy.visit('http://localhost:3000/')
+        cy.get('.country-dropdown')
+            .select('Uzbekistan')
+            .get('.dropdown-btn').click()
+        // cy.visit('http://localhost:3000/Uzbekistan')
         // // // .url().should('eq', 'http://localhost:3000/Uzbekistan')
         // // cy.visit('http://localhost:3000/Uzbekistan')
     })
@@ -13,22 +17,7 @@ describe('Quiz Page User Flow', () => {
             // .url().should('eq', 'http://localhost:3000/Uzbekistan')
             // .url().should('not.eq', 'http://localhost:3000/')
             cy.get('h1').contains('What In The World')
-            const questions = [
-            'What is the population of?',
-            'What is the capital of? ',
-            'How many countries border?'
-           ]
-        
-            const getRandomElement = () => {
-                const result = questions[Math.floor(Math.random() * questions.length)]
-                cy.get('h2').contains(result)    
-                }
-            // cy.get('h2').contains('What is the population of Uzbekistan?')
-            cy.get('.answer-input').should('be.visible')
-        // cy.get('h1').contains('What In The World')
-        // .get('h2').contains('What is the population of?')
-        // .get('.answer-input').should('be.visible')
-        // .get('.submit-button').should('be.visible')
+            cy.get('h2').should('contain', 'Uzbekistan?')
     })
 
     // // SAD PATH

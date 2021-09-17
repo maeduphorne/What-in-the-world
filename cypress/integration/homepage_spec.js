@@ -2,7 +2,6 @@ describe('Main Page Render', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000/')
         cy.FetchData('GET', 'https://restcountries.eu/rest/v2/all')
-        
         });
 
     it('Should have a header with the App\'s name on page load & an image of a map', () => {
