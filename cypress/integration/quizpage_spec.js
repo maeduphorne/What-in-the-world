@@ -52,6 +52,10 @@ describe('Quiz Page User Flow', () => {
         cy.get('h3').contains('Incorrect')
     })
     // it Should render text telling the user some facts about the country
+    it('Should render text telling the user about the country', () => {
+        cy.get('.subregion-fact').contains('Central Asia')
+        //Add more facts referencing their className in the <p> tag
+    })
     // SAD - if the user enter special characters, an error messages is visible
     // it Should bring the user back to the home page by clicking the Header
 
