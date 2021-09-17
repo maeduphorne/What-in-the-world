@@ -75,21 +75,18 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
       style={
         { backgroundImage: `url(${currentCountry.flag})` }
       }>
-      <div className="gradient-container">
+      <section className="gradient-container">
         <p className="user-guess">
           Your guess was {guess}
         </p>
-        <h3>
-          {answer}
-        </h3>
-        <section className="extra-facts">
+        <h3>{answer}</h3>
+        <article className="extra-facts">
           <p>
             {currentCountry.name} is located in {currentCountry.subregion}.
-            Country has currency of {currency.name} and population speaks {languages}
-
+            Country has currency of {currency.name} and population speaks {languages}!
           </p>
-        </section>
-      </div>
+        </article>
+      </section>
     </article>
   )
 }
