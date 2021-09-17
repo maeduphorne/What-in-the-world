@@ -16,6 +16,14 @@ describe('Quiz Page User Flow', () => {
         .get('.answer-input').should('be.visible')
         .get('.submit-button').should('be.visible')
     })
+
+    // SAD - if the user enter special characters, an error messages is visible
+    it('Should render an error message & stay on form page if a user enters special characters', () => {
+        cy.get('.answer-input').type('@@@')
+        cy.get('.input-error-message').should('be.visible')
+        //Add more facts referencing their className in the <p> tag
+    })
+
     // stub and pass data to question field - 1 for capital && 1 for borders
     it('conditional for randomized questions', () => {
         cy.get('h2').then((header) => {
@@ -46,17 +54,18 @@ describe('Quiz Page User Flow', () => {
     // })
 
     // it Should allow a user to input an answer to the question and submit
-    // it Should render text telling the user if the answer is incorrect or correct
+
     it('Should tell the user if their guess was correct or incorrect', () => {
         cy.get('.user-guess').contains('Your guess was')
+        //Will need to change the value below based on what text is entered as a response
         cy.get('h3').contains('Incorrect')
     })
-    // it Should render text telling the user some facts about the country
+
     it('Should render text telling the user about the country', () => {
         cy.get('.subregion-fact').contains('Central Asia')
         //Add more facts referencing their className in the <p> tag
     })
-    // SAD - if the user enter special characters, an error messages is visible
+
     // it Should bring the user back to the home page by clicking the Header
 
 
