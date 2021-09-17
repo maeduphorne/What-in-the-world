@@ -84,7 +84,7 @@ const App = () => {
                 className="country-dropdown"
                 onChange={(e) => setSelectedCountry(e.target.value)}>
                   <option value=''>
-                   {selectedCountry}
+                    {selectedCountry}
                   </option>
                 options={countryNames}
               </select>
