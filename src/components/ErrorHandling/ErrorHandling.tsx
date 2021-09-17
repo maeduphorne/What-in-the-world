@@ -1,12 +1,16 @@
 import React from 'react';
 import './ErrorHandling.css';
 
-const ErrorHandling = () => {
+interface IProps{
+  errorMessage: string 
+}
+
+const ErrorHandling:React.FC<IProps> = ({errorMessage}) => {
 
   return (
-    <div>
-      Hello World
-    </div>
+    <p>
+      {errorMessage}
+    </p>
   )
 }
 
