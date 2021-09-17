@@ -15,6 +15,20 @@ describe('Quiz Page User Flow', () => {
         .get('.submit-button').should('be.visible')
     })
     // stub and pass data to question field - 1 for capital && 1 for borders
+    it('', () => {
+        cy.get('h2').then((header) => {
+            if(header.includes('capital')){
+                cy.get('.answer-input').type('Tashkent')
+                cy.get('.submit-button').click()
+            } else if(header.includes('population')) {
+                cy.get('.answer-input').type('31576400')
+                cy.get('.submit-button').click()
+            } else {
+                cy.get('.answer-input').type('5')
+                cy.get('.submit-button').click()
+            }
+        })
+    })
     // it Should allow a user to input an answer to the question and submit
     // it Should render text telling the user if the answer is incorrect or correct
     // it Should render text telling the user some facts about the country
