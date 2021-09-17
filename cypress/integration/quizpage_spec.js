@@ -17,12 +17,12 @@ describe('Quiz Page User Flow', () => {
         .get('.submit-button').should('be.visible')
     })
     // stub and pass data to question field - 1 for capital && 1 for borders
-    it('', () => {
-        cy.get('h2').then(() => {
-            if(expect('capital').to.exist){
+    it('conditional for randomized questions', () => {
+        cy.get('h2').then((header) => {
+            if(header.find('capital')){
                 cy.get('.answer-input').type('Tashkent')
                 cy.get('.submit-button').click()
-            } else if(expect('population').to.exist) {
+            } else if(header.find('population')) {
                 cy.get('.answer-input').type('31576400')
                 cy.get('.submit-button').click()
             } else {
@@ -47,8 +47,12 @@ describe('Quiz Page User Flow', () => {
 
     // it Should allow a user to input an answer to the question and submit
     // it Should render text telling the user if the answer is incorrect or correct
+    it('Should tell the user if their guess was correct or incorrect', () => {
+        cy.get('.user-guess').contains('Your guess was')
+        cy.get('h3').contains('Incorrect')
+    })
     // it Should render text telling the user some facts about the country
-    // SAD - if the user enter secial characters, an error messages is visible
+    // SAD - if the user enter special characters, an error messages is visible
     // it Should bring the user back to the home page by clicking the Header
 
 
