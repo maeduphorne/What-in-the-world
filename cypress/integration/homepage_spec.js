@@ -8,19 +8,19 @@ describe('Main Page Render', () => {
         cy.get('.worldMapImg').should('be.visible')
     })
 
-    // should display a drop down form of countries on load
     it('Should display a drop down menu on load', () => {
         cy.get('.country-dropdown')
             .should('be.visible')
             .should('have.value', '')
             .contains('option')
         })   
-    // should be able to select a country and submit the country on button click 
+
     it('Should be able to select a country', () => {
         cy.get('.country-dropdown')
             .select('Uzbekistan')
             .should('be.visible')
     })
+    // if a country is not selected, an error message will display
 
     it('Should be able to select a country, should update url to matching path and display country Quiz Page', () => {
         cy.get('.country-dropdown')
