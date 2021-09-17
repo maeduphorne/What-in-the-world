@@ -41,7 +41,7 @@ describe('Quiz Page User Flow', () => {
     //         }
     //     })
     //     })
-
+    //SECOND ATTEMPT AT CONDITIONAL
     // it('should have statements for randomized questions', () => {
     //         cy.url().should('eq', 'http://localhost:3000/Uzbekistan')
     //         cy.get('h2').should('have.value', '')
