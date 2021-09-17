@@ -70,7 +70,7 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <Link to="/">
+        <Link to="/" className="home-click">
           <h1>What In The World</h1>
         </Link>
       </header>

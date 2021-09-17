@@ -67,6 +67,13 @@ describe('Quiz Page User Flow', () => {
     })
 
     // it Should bring the user back to the home page by clicking the Header
-
+    it('Should bring the user back to the home page by clicking the Header', () => {
+        cy.get('.home-click').click()
+        cy.get('h1').contains('What In The World')
+        cy.get('.worldMapImg').should('be.visible')
+        cy.get('.country-dropdown')
+            .should('be.visible')
+            .should('have.value', '')
+    })
 
 })
