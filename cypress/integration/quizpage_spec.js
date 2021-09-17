@@ -5,26 +5,26 @@ describe('Quiz Page User Flow', () => {
         cy.get('.country-dropdown')
             .select('Uzbekistan')
             .get('.dropdown-btn').click()
-        // cy.visit('http://localhost:3000/Uzbekistan')
-        // // // .url().should('eq', 'http://localhost:3000/Uzbekistan')
-        // // cy.visit('http://localhost:3000/Uzbekistan')
+        cy.url().should('eq', 'http://localhost:3000/Uzbekistan')
     })
 
     it('Should render a page displaying a quiz question about the selected country & answer field', () => {
-        // cy.get('.country-dropdown')
-        // .select('Uzbekistan')
-        //     .get('.dropdown-btn').click()
-            // .url().should('eq', 'http://localhost:3000/Uzbekistan')
-            // .url().should('not.eq', 'http://localhost:3000/')
-            cy.get('h1').contains('What In The World')
-            cy.get('h2').should('contain', 'Uzbekistan?')
+        cy.get('h1').contains('What In The World')
+        cy.get('h2').should('contain', 'Uzbekistan?')
+        .get('.answer-input').should('be.visible')
+        .get('.submit-button').should('be.visible')
     })
 
     // // SAD PATH
-    // it('Should render an error message & stay on form page if a user enters special characters', () => {
-    //     cy.get('.answer-input').type('@@@')
-    //     cy.get('.input-error-message').should('be.visible')
-    // })
+    it('Should render an error message & stay on form page if a user enters special characters', () => {
+        cy.get('.answer-input').type('@@@')
+        cy.get('.input-error-message').should('be.visible')
+    })
+
+    it('Should be able to type an answer and submit the answer', () => {
+        cy.get('.answer-input').type('Tashkent')
+        cy.get('.submit-button').click()
+    })
 
     // stub and pass data to question field - 1 for capital && 1 for borders
     // it Should allow a user to input an answer to the question and submit

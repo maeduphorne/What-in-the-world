@@ -39,7 +39,6 @@ describe('Main Page Render', () => {
 
 // describe('Main page fetch', () => {
 //     it('Should create a drop down menu using all country names on page load', () => {
-       
 //         cy.get('.country-dropdown').select('Uzbekistan')
 //         cy.get('.dropdown-btn').click()
 //         .get('h2').contains('Uzbekistan')
