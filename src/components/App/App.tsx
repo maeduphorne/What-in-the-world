@@ -70,7 +70,7 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <Link to="/">
+        <Link to="/" className="home-click">
           <h1>What In The World</h1>
         </Link>
       </header>
@@ -84,7 +84,7 @@ const App = () => {
                 className="country-dropdown"
                 onChange={(e) => setSelectedCountry(e.target.value)}>
                   <option value=''>
-                   {selectedCountry}
+                    {selectedCountry}
                   </option>
                 options={countryNames}
               </select>
