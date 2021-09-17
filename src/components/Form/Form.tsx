@@ -6,11 +6,17 @@ interface IState{
   questions: string
   currentCountry: {
     name: string
+    languages:[{
+      name:string
+    }]
     population: number
     capital: string
     flag: string
     subregion: string
     borders: string[]
+    currencies:[{
+      name:string
+    }]
   } 
 }
 
