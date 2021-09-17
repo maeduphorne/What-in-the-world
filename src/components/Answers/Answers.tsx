@@ -85,7 +85,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
         <section className="extra-facts">
           <p>
             {currentCountry.name} is located in {currentCountry.subregion}.
-            Country has currency of {currency.name} {languages}
+            Country has currency of {currency.name} and population speaks {languages}
 
           </p>
         </section>
