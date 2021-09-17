@@ -1,3 +1,5 @@
+const { useEffect } = require("react");
+
 describe('Quiz Page User Flow', () => {
     beforeEach(() => {
         it('Should select a country and move to that country\'s quiz page', () => {
@@ -16,11 +18,11 @@ describe('Quiz Page User Flow', () => {
     })
     // stub and pass data to question field - 1 for capital && 1 for borders
     it('', () => {
-        cy.get('h2').then((header) => {
-            if(header.includes('capital')){
+        cy.get('h2').then(() => {
+            if(expect('capital').to.exist){
                 cy.get('.answer-input').type('Tashkent')
                 cy.get('.submit-button').click()
-            } else if(header.includes('population')) {
+            } else if(expect('population').to.exist) {
                 cy.get('.answer-input').type('31576400')
                 cy.get('.submit-button').click()
             } else {
@@ -28,7 +30,21 @@ describe('Quiz Page User Flow', () => {
                 cy.get('.submit-button').click()
             }
         })
-    })
+        })
+    // it('stubbin', () => {
+        // let getRandomElement = cy.stub()
+        // getRandomElement()
+        // expect(getRandomElement).to.be.called
+        // let result;
+
+        // cy.stub(questions, 'getRandomElement', () => {
+        //     result = questions[1]
+        //     setQuestions((result))
+        // })
+        // useEffect()
+        // cy.should('eq', questions[1])
+    // })
+
     // it Should allow a user to input an answer to the question and submit
     // it Should render text telling the user if the answer is incorrect or correct
     // it Should render text telling the user some facts about the country
