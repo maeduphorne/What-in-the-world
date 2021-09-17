@@ -1,4 +1,5 @@
 const { useEffect } = require("react");
+var questions = require('../fixtures/questions.json');
 
 describe('Quiz Page User Flow', () => {
     beforeEach(() => {
@@ -17,33 +18,60 @@ describe('Quiz Page User Flow', () => {
         .get('.submit-button').should('be.visible')
     })
 
-    // SAD - if the user enter special characters, an error messages is visible
+    // SAD PATH
     it('Should render an error message & stay on form page if a user enters special characters', () => {
         cy.get('.answer-input').type('@@@')
         cy.get('.input-error-message').should('be.visible')
-        //Add more facts referencing their className in the <p> tag
     })
 
     // stub and pass data to question field - 1 for capital && 1 for borders
-    it('conditional for randomized questions', () => {
-        cy.get('h2').then((header) => {
-            if(header.find('capital')){
-                cy.get('.answer-input').type('Tashkent')
-                cy.get('.submit-button').click()
-            } else if(header.find('population')) {
-                cy.get('.answer-input').type('31576400')
-                cy.get('.submit-button').click()
-            } else {
-                cy.get('.answer-input').type('5')
-                cy.get('.submit-button').click()
-            }
-        })
-        })
+    // it Should allow a user to input an answer to the question and submit
+    //ATTEMPT AT CONDITONAL - leaving so that tests go to next page
+    // it('conditional for randomized questions', () => {
+    //     cy.get('h2').then((header) => {
+    //         if(header.find('capital')){
+    //             cy.get('.answer-input').type('Tashkent')
+    //             cy.get('.submit-button').click()
+    //         } else if(header.find('population')) {
+    //             cy.get('.answer-input').type('31576400')
+    //             cy.get('.submit-button').click()
+    //         } else {
+    //             cy.get('.answer-input').type('5')
+    //             cy.get('.submit-button').click()
+    //         }
+    //     })
+    //     })
+
+    // it('should have statements for randomized questions', () => {
+    //         cy.url().should('eq', 'http://localhost:3000/Uzbekistan')
+    //         cy.get('h2').should('have.value', '')
+    //         cy.get('h2').contains('What is the capital of Uzbekistan?')
+
+
+            //         cy.get('.answer-input').type('Tashkent')
+            //         cy.get('.submit-button').click()
+            //     } else if(header.find('population')) {
+            //         cy.get('.answer-input').type('31576400')
+            //         cy.get('.submit-button').click()
+            //     } else {
+            //         cy.get('.answer-input').type('5')
+            //         cy.get('.submit-button').click()
+            //     }
+            // })
+            // })
+
+    //ATTEMPTING FIXTURES
+    // it('questions', () => {
+    //     cy.fixture('questions').then(questionsFix)
+    //     expect(questions.name).to.equal(['What is the population of'])
+    // })
+
+    //ATTEMPT AT STUBBING
     // it('stubbin', () => {
-        // let getRandomElement = cy.stub()
-        // getRandomElement()
-        // expect(getRandomElement).to.be.called
-        // let result;
+    //     let getRandomElement = cy.stub()
+    //     getRandomElement()
+    //     expect(getRandomElement).to.be.called
+    //     let result;
 
         // cy.stub(questions, 'getRandomElement', () => {
         //     result = questions[1]
@@ -52,8 +80,6 @@ describe('Quiz Page User Flow', () => {
         // useEffect()
         // cy.should('eq', questions[1])
     // })
-
-    // it Should allow a user to input an answer to the question and submit
 
     it('Should tell the user if their guess was correct or incorrect', () => {
         cy.get('.user-guess').contains('Your guess was')
@@ -66,7 +92,6 @@ describe('Quiz Page User Flow', () => {
         //Add more facts referencing their className in the <p> tag
     })
 
-    // it Should bring the user back to the home page by clicking the Header
     it('Should bring the user back to the home page by clicking the Header', () => {
         cy.get('.home-click').click()
         cy.get('h1').contains('What In The World')
