@@ -2,3 +2,18 @@
   color: red;
   font-weight: bolder;
 }
+
+input {
+  background-color: rgb(255 255 255 / 0%);
+  margin-bottom: 1em;
+  padding: .25em;
+  border: 0;
+  border-bottom: 2px solid currentcolor; 
+  font-weight: bold;
+  letter-spacing: .15em;
+  border-radius: 0;
+}
+
+.flag-img {
+  width: 35vw;
+}
