@@ -85,7 +85,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
       </p>
       </section>
       <Link to="/" >
-      <button>Take Me Home</button>
+      <button className='home-btn'>Take Me Home</button>
       </Link>
     </article>
   )
