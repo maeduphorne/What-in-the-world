@@ -32,12 +32,11 @@ describe('Quiz Page User Flow', () => {
         cy.get('h2').should('contain', 'Uzbekistan?')
         cy.get('.user-guess').should('contain', 'Your guess was')
         cy.get('h3').should('be.visible')
-        cy.get('.country-stats').should('be.visible')
+        cy.get('.extra-facts').should('be.visible')
         cy.get('.home-btn').click()
         cy.visit('http://localhost:3000/')
         cy.get('.home-click').click()
         cy.visit('http://localhost:3000/')
-        
     })
 
     it('Should bring the user back to the home page by clicking the home button', () => {
