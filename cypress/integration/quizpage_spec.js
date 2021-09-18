@@ -32,7 +32,7 @@ describe('Quiz Page User Flow', () => {
         cy.get('h2').should('contain', 'Uzbekistan?')
         cy.get('.user-guess').should('contain', 'Your guess was')
         cy.get('h3').should('be.visible')
-        cy.get('.subregion-fact').should('be.visible')
+        cy.get('.extra-facts').should('be.visible')
     })
 
     it('Should bring the user back to the home page by clicking the Header', () => {
