@@ -44,7 +44,8 @@ They're able to return to the home page by clicking the What in the World text a
   
 
 ## Contributors
-  + [Mark Cawthray (Author)](https://github.com/MTCawthray)
+  + [Mark Cawthray](https://github.com/MTCawthray)
+  + [Farangiz Akhatova](https://github.com/Fakhatova)
   
 
 ## Reflections And Wins
