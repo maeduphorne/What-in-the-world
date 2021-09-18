@@ -47,7 +47,3 @@ const Form:React.FC <IState> = ({ questions, currentCountry}) => {
 }
 
 export default Form;
-// testing needed
-// error handling needed:
-// Should not submit if input field is left empty
-// If input is left empty and user clicks submit, they should still see the input field (try to implement required data type)
