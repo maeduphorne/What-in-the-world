@@ -57,7 +57,6 @@ const App = () => {
    // ******* Button click function  ********//
   const handleSubmit = (e:any) => {
     getCurrentCountry()
-    console.log(selectedCountry);
     history.push(`/${selectedCountry}`)
     setSelectedCountry('Select A Country') 
     setError('')
