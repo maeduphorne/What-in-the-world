@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Answers.css';
 
 interface Iprops{
@@ -57,24 +58,21 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }, [])
 
   return (
-    <article 
-      className="answer-display"
-      style={
-        { backgroundImage: `url(${currentCountry.flag})` }
-      }>
-      <div className="gradient-container">
-        <p className="user-guess">
-          Your guess was {guess}
+    <article className="answer-display">
+      <p className="user-guess">
+        Your guess was {guess}
+      </p>
+      <h3>
+        {answer}
+      </h3>
+      <section className="extra-facts">
+        <p>
+          {currentCountry.name} is located in {currentCountry.subregion}.
         </p>
-        <h3>
-          {answer}
-        </h3>
-        <section className="extra-facts">
-          <p>
-            {currentCountry.name} is located in {currentCountry.subregion}.
-          </p>
-        </section>
-      </div>
+      </section>
+      <Link to="/" >
+      <button>Take Me Home</button>
+      </Link>
     </article>
   )
 }
