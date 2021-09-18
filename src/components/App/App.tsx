@@ -57,6 +57,7 @@ const App = () => {
    // ******* Button click function  ********//
   const handleSubmit = (e:any) => {
     getCurrentCountry()
+    console.log(selectedCountry);
     history.push(`/${selectedCountry}`)
     setSelectedCountry('Select A Country') 
     setError('')
@@ -71,6 +72,12 @@ const App = () => {
         history.push(`/country/${err}`)
       })
   }, [])
+
+  useEffect(() => {
+    if (displayCountry.name) {
+    localStorage.setItem('currentCountry', JSON.stringify(displayCountry));
+    }
+  }, [displayCountry])
   
   return (
     <div className="App">
