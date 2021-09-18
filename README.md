@@ -28,7 +28,10 @@ They're able to return to the home page by clicking the What in the World text a
 [gif goes here]()
 
 ## Setup Instructions
-  + 
+  + Run `git clone https://github.com/MTCawthray/What-in-the-world.git` into your local machine.
+  + Run `npm install` 
+  + Run `npm start` to open page in the browser
+  + Run `npm run cypress` to test Cypress
   
 ### Using The App
  +
@@ -46,6 +49,7 @@ They're able to return to the home page by clicking the What in the World text a
 ## Contributors
   + [Mark Cawthray](https://github.com/MTCawthray)
   + [Farangiz Akhatova](https://github.com/Fakhatova)
+  + [Mae Duphorne](https://github.com/maeduphorne)
   
 
 ## Reflections And Wins
