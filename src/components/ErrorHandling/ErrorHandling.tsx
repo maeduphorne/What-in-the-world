@@ -13,6 +13,9 @@ const ErrorHandling:React.FC<IProps> = ({errorMessage}) => {
     <section className="error-display" >
       <img src={errorIcon} alt="error icon" className="error-img" />
       <p>
+        There was an issue!
+      </p>
+      <p>
         {errorMessage}
       </p>
       <Link to="/" >
