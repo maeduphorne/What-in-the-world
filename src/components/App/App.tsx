@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Link, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
 import QuizPage from '../QuizPage/QuizPage';
+import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
 const { v4: uuidv4 } = require('uuid')
 
@@ -26,6 +26,7 @@ const App = () => {
   const [countries, setCountries] = useState<IState['countries']>([]);
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
   const [error, setError] = useState<string>('');
+  const [serverError, setServerError] = useState<string>('');
   const [displayCountry, setDisplayCountry] = useState<any>({})
   const history = useHistory();
 
@@ -44,7 +45,7 @@ const App = () => {
   }
 
    // ******* Select error handle  ********//
-   const errorCheck = (e: any) => {
+  const errorCheck = (e: any) => {
     e.preventDefault()
     if (selectedCountry.includes('Select A Country')) {
       setError('Please select a country')
@@ -61,10 +62,14 @@ const App = () => {
     setError('')
   }
 
-
   useEffect(() => {
+    setServerError('');
     apiCalls.fetchCountriesData()
       .then((data) => setCountries(data))
+      .catch((err) => {
+        setServerError(err)
+        history.push(`/country/${err}`)
+      })
   }, [])
   
   return (
@@ -87,13 +92,13 @@ const App = () => {
                     <option value=''>
                     {selectedCountry}
                     </option>
-                  options={countryNames}
+                  options={countryNames} 
                 </select>
-                  <button onClick={(e) => errorCheck(e)} 
-                    className="dropdown-btn">
-                    Submit Country
-                  </button>
-                {error !== '' && <p>{error}</p>}
+                <button onClick={(e) => errorCheck(e)} 
+                  className="dropdown-btn">
+                  Submit Country
+                </button>
+                {error !== '' && <p className="input-error-message">{error}</p>}
               </form>
               </section>
               <img src={mapIcon} alt="world map" className="worldMapImg" />
@@ -104,11 +109,15 @@ const App = () => {
         <Route exact path="/:country" render={ ({ match }) => {
           return ( 
             <QuizPage 
+            name="country"
             currentCountry={displayCountry}
             country={displayCountry.name}
             />)
           }
-        }/> 
+        }/>
+        <Route render={ () => {
+          return <ErrorHandling errorMessage={serverError} /> 
+        }}/>
       </Switch>
     </div>
   );
