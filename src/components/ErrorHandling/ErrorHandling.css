@@ -1,0 +1,9 @@
+.error-img {
+  height: 15vh;
+}
+
+.error-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

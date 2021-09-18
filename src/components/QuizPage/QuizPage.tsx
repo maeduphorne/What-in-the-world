@@ -18,6 +18,7 @@ interface IState{
     borders: string[]
   } 
   country: string
+  name: string
 }
 
 
@@ -51,10 +52,15 @@ const QuizPage: React.FC<IState> = ({ currentCountry }) => {
     }
   }
   return (
-    <div className="display-area" >
+    <div className="display-area quiz-display" >
       <section className="display-area" >
-        {currentCountry && <h2>{questions} {getCountryName()}?</h2>}
-        {currentCountry && <Form questions={`${questions} ${currentCountry.name}?`} currentCountry={currentCountry}/>}
+        {currentCountry && (
+        <div className="quiz-contents">
+          <img src={currentCountry.flag} alt={`${currentCountry.name} flag`} className="flag-img" />
+          <h2>{questions} {currentCountry.name}?</h2>
+          <Form questions={`${questions} ${currentCountry.name}?`} currentCountry={currentCountry}/>
+        </div>
+        )}
       </section>
     </div>
   )
@@ -62,7 +68,3 @@ const QuizPage: React.FC<IState> = ({ currentCountry }) => {
 
 export default QuizPage;
 
-// Testing!
-// Error handling needed:
-// On page refresh, it should not render a new question, but keep previous question
-// 
