@@ -18,6 +18,7 @@ interface IQuizPageProps {
     borders: string[]
   } 
   country: string
+  name: string
 }
 
 
@@ -49,13 +50,19 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   
   
   return (
-    <div className="display-area" >
+    <div className="display-area quiz-display" >
       <section className="display-area" >
-        {country  && <h2>{questions}?</h2>}
-        {country  && <Form questions={`${questions} ${country.name}?`} currentCountry={country}/>}
+        {currentCountry && (
+        <div className="quiz-contents">
+          <img src={currentCountry.flag} alt={`${currentCountry.name} flag`} className="flag-img" />
+         {country  && <h2>{questions}?</h2>}
+        {country  && <Form questions={`${questions} ${country.name}?`} currentCountry={country}/>}  
+        </div>
+        )}
       </section>
     </div>
   )
 }
 
 export default QuizPage;
+

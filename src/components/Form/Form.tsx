@@ -21,7 +21,7 @@ interface IState{
 }
 
 const Form:React.FC <IState> = ({ questions, currentCountry}) => {
-  const [answer,setAnswer] = useState<string>();
+  const [answer,setAnswer] = useState<string>('');
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const handleSubmit = (e:any) => {
