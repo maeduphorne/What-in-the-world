@@ -59,8 +59,3 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
 }
 
 export default QuizPage;
-
-// Testing!
-// Error handling needed:
-// On page refresh, it should not render a new question, but keep previous question
-// 
