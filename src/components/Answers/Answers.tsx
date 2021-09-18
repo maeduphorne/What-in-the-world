@@ -7,10 +7,16 @@ interface Iprops{
   guess: string 
   currentCountry: {
     name: string
+    languages:[{
+      name:string
+    }]
     population: number
     capital: string
     subregion: string
     borders: string[]
+    currencies:[{
+      name:string
+    }]
     flag: string
   } 
 }
@@ -18,6 +24,8 @@ interface Iprops{
 const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
   const [answer, setAnswer] = useState<string | number>('')
+  const [currency] = currentCountry.currencies
+  const [languages, setLanguage] = useState<string[]>()
 
   const checkPopulation = () => {
     if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
@@ -52,9 +60,14 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
       checkBorders();
     }
   }
+  const setLanguages = () => {
+    const checkLanguage = currentCountry.languages.map(country => `${country.name} `)
+    setLanguage(checkLanguage)
+  }
 
   useEffect(() => {
     findAnswer(questions)
+    setLanguages()
   }, [])
 
   return (
@@ -66,9 +79,10 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
         {answer}
       </h3>
       <section className="extra-facts">
-        <p>
-          {currentCountry.name} is located in {currentCountry.subregion}.
-        </p>
+      <p>
+        {currentCountry.name} is located in {currentCountry.subregion}.
+        Country has currency of {currency.name} and population speaks {languages}!
+      </p>
       </section>
       <Link to="/" >
       <button>Take Me Home</button>
