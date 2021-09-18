@@ -15,7 +15,7 @@ const ErrorHandling:React.FC<IProps> = ({errorMessage}) => {
       <p>
         There was an issue!
       </p>
-      <p>
+      <p className="error-message">
         {errorMessage}
       </p>
       <Link to="/" >
