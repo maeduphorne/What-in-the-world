@@ -27,7 +27,7 @@ They're able to return to the home page by clicking the What in the World text a
   + Run `npm install` 
   + Run `npm start` to open page in the browser
   + Run `npm run cypress` to test Cypress
-
+  
 ## Examples
 
 [image goes here]()
