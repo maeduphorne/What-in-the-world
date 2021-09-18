@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Link, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
 import QuizPage from '../QuizPage/QuizPage';
+import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
 const { v4: uuidv4 } = require('uuid')
 
@@ -26,6 +26,7 @@ const App = () => {
   const [countries, setCountries] = useState<IState['countries']>([]);
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
   const [error, setError] = useState<string>('');
+  const [serverError, setServerError] = useState<string>('');
   const [displayCountry, setDisplayCountry] = useState<any>({})
   const history = useHistory();
 
@@ -44,7 +45,7 @@ const App = () => {
   }
 
    // ******* Select error handle  ********//
-   const errorCheck = (e: any) => {
+  const errorCheck = (e: any) => {
     e.preventDefault()
     if (selectedCountry.includes('Select A Country')) {
       setError('Please select a country')
@@ -56,16 +57,27 @@ const App = () => {
    // ******* Button click function  ********//
   const handleSubmit = (e:any) => {
     getCurrentCountry()
+    console.log(selectedCountry);
     history.push(`/${selectedCountry}`)
     setSelectedCountry('Select A Country') 
     setError('')
   }
 
-
   useEffect(() => {
+    setServerError('');
     apiCalls.fetchCountriesData()
       .then((data) => setCountries(data))
+      .catch((err) => {
+        setServerError(err)
+        history.push(`/country/${err}`)
+      })
   }, [])
+
+  useEffect(() => {
+    if (displayCountry.name) {
+    localStorage.setItem('currentCountry', JSON.stringify(displayCountry));
+    }
+  }, [displayCountry])
   
   return (
     <div className="App">
@@ -74,40 +86,46 @@ const App = () => {
           <h1>What In The World</h1>
         </Link>
       </header>
-      <Route exact path="/" render={ () => {
-        return (
-          <main className="mainDisplay">
-            <section>
-            <form 
-              className="country-selector">
-              <select 
-                className="country-dropdown"
-                onChange={(e) => setSelectedCountry(e.target.value)}>
-                  <option value=''>
+      <Switch>
+        <Route exact path="/" render={ () => {
+          return (
+            <main className="mainDisplay">
+              <section>
+              <form 
+                className="country-selector">
+                <select 
+                  className="country-dropdown"
+                  onChange={(e) => setSelectedCountry(e.target.value)}>
+                    <option value=''>
                     {selectedCountry}
-                  </option>
-                options={countryNames}
-              </select>
+                    </option>
+                  options={countryNames} 
+                </select>
                 <button onClick={(e) => errorCheck(e)} 
                   className="dropdown-btn">
                   Submit Country
                 </button>
-              {error !== '' && <p>{error}</p>}
-            </form>
-            </section>
-            <img src={mapIcon} alt="world map" className="worldMapImg" />
-          </main>
-        )
-      }
-      }/>
-      <Route exact path="/:country" render={ ({ match }) => {
-        return ( 
-          <QuizPage 
-          currentCountry={displayCountry}
-          country={displayCountry.name}
-          />)
-      }
-    }/> 
+                {error !== '' && <p className="input-error-message">{error}</p>}
+              </form>
+              </section>
+              <img src={mapIcon} alt="world map" className="worldMapImg" />
+            </main>
+          )
+        }
+        }/>
+        <Route exact path="/:country" render={ ({ match }) => {
+          return ( 
+            <QuizPage 
+            name="country"
+            currentCountry={displayCountry}
+            country={displayCountry.name}
+            />)
+          }
+        }/>
+        <Route render={ () => {
+          return <ErrorHandling errorMessage={serverError} /> 
+        }}/>
+      </Switch>
     </div>
   );
 }

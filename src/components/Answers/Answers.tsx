@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Answers.css';
 
 interface Iprops{
@@ -35,7 +36,7 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }
 
   const checkCapital = () => {
-    if (guess.toUpperCase() === currentCountry.capital.toUpperCase()) {
+    if (guess[0].toUpperCase() === currentCountry.capital.toUpperCase()) {
       setAnswer(`Correct! The capital of ${currentCountry.name} is ${currentCountry.capital}! `);
     } else {
       setAnswer(`Incorrect- the capital of ${currentCountry.name} is ${currentCountry.capital}.`);
@@ -60,8 +61,8 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
     }
   }
   const setLanguages = () => {
-   const checkLanguage = currentCountry.languages.map(country => `${country.name} `)
-   setLanguage(checkLanguage)
+    const checkLanguage = currentCountry.languages.map(country => `${country.name} `)
+    setLanguage(checkLanguage)
   }
 
   useEffect(() => {
@@ -70,23 +71,22 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
   }, [])
 
   return (
-    <article 
-      className="answer-display"
-      style={
-        { backgroundImage: `url(${currentCountry.flag})` }
-      }>
-      <section className="gradient-container">
-        <p className="user-guess">
-          Your guess was {guess}
-        </p>
-        <h3>{answer}</h3>
-        <article className="extra-facts">
-          <p>
-            {currentCountry.name} is located in {currentCountry.subregion}.
-            Country has currency of {currency.name} and population speaks {languages}!
-          </p>
-        </article>
+    <article className="answer-display">
+      <p className="user-guess">
+        Your guess was {guess}
+      </p>
+      <h3>
+        {answer}
+      </h3>
+      <section className="extra-facts">
+      <p>
+        {currentCountry.name} is located in {currentCountry.subregion}.
+        Country has currency of {currency.name} and population speaks {languages}!
+      </p>
       </section>
+      <Link to="/" >
+      <button>Take Me Home</button>
+      </Link>
     </article>
   )
 }

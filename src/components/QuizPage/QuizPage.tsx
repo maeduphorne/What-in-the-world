@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { setSyntheticTrailingComments } from 'typescript';
+import apiCalls from '../../api/apiCalls';
 import Form from '../Form/Form'
 
-interface IState{
+interface IQuizPageProps {
   currentCountry: {
     name: string
     languages:[{
@@ -18,43 +18,47 @@ interface IState{
     borders: string[]
   } 
   country: string
+  name: string
 }
 
 
-const QuizPage: React.FC<IState> = ({ currentCountry }) => {
+const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   const [questions, setQuestions] = useState< string | null > (null)
+  const [country, setCountry] = useState<any>()
   const questionList = [
     'What is the population of',
     'What is the capital of',
     'How many countries border'
   ]
-   // ********* Randomizer ********//
-  const getRandomElement = () => {
-    const result = questionList[Math.floor(Math.random() * questionList.length)]
-    setQuestions((result))
-    
-  }
-
-  useEffect(() =>{
-    if(!questions)
-      getRandomElement()
-  }, [])
   
-  const getCountryName = () => {
-    if(currentCountry.name) {
-      return currentCountry.name
-    }else {
-      let UrlName = window.location.href
-      let splitUrl = UrlName.split('/')
-      let countryName = splitUrl[3]
-      return countryName
+   // ********* Randomizer ********//
+
+  useEffect(() => {
+    if (currentCountry && currentCountry.name) {
+      setCountry(currentCountry)
+      getRandomElement(currentCountry.name)
+    } else {
+      setCountry(JSON.parse(localStorage.getItem('currentCountry')!))
+      getRandomElement(JSON.parse(localStorage.getItem('currentCountry')!).name)
     }
+  }, [])
+
+  const getRandomElement = (name: string) => {
+  const result = questionList[Math.floor(Math.random() * questionList.length)] + ' ' + name
+   setQuestions((result))
   }
+  
+  
   return (
-    <div className="display-area" >
+    <div className="display-area quiz-display" >
       <section className="display-area" >
-        {currentCountry && <h2>{questions} {getCountryName()}?</h2>}
-        {currentCountry && <Form questions={`${questions} ${currentCountry.name}?`} currentCountry={currentCountry}/>}
+        {currentCountry && (
+        <div className="quiz-contents">
+          <img src={currentCountry.flag} alt={`${currentCountry.name} flag`} className="flag-img" />
+         {country  && <h2>{questions}?</h2>}
+        {country  && <Form questions={`${questions} ${country.name}?`} currentCountry={country}/>}  
+        </div>
+        )}
       </section>
     </div>
   )
@@ -62,7 +66,3 @@ const QuizPage: React.FC<IState> = ({ currentCountry }) => {
 
 export default QuizPage;
 
-// Testing!
-// Error handling needed:
-// On page refresh, it should not render a new question, but keep previous question
-// 
