@@ -105,6 +105,13 @@ Cypress.Commands.add('Fetch404Data', (method, url) => {
         body: {}
     })
 })
+
+Cypress.Commands.add('Fetch500Data', (method, url) => {
+    cy.intercept(`${method}`,`${url}`, {
+        statusCode: 500,
+        body: {}
+    })
+})
 //
 //
 // -- This is a child command --
