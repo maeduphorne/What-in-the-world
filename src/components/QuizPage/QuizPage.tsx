@@ -30,8 +30,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
     'How many countries border'
   ]
   
-  // |||||||||||||| UPDATING STATE, GETTING LOCAL STORAGE |||||||||||||| //
-  
+   //|||||||||||||| UPDATING STATE, GETTING LOCAL STORAGE ||||||||||||||//
   useEffect(() => {
     if (currentCountry && currentCountry.name) {
       setCountry(currentCountry);
@@ -42,8 +41,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
     }
   }, [])
 
-   // |||||||||||||| RANDOMIZING QUIZ QUESTIONS |||||||||||||| //
-
+   //|||||||||||||| RANDOMIZING QUIZ QUESTIONS ||||||||||||||//
   const getRandomElement = (name: string) => {
   const result = questionList[Math.floor(Math.random() * questionList.length)] +` ${name}`
    setQuestions((result));
