@@ -24,7 +24,9 @@ const Form:React.FC <IFormProps> = ({ questions, currentCountry}) => {
   const [answer,setAnswer] = useState<string>('');
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-   // |||||||||||||| BUTTON SUBMIT HELPER FUNCTION ||||||||||||||//
+  // ***********************************************
+          /*BUTTON SUBMIT HELPER FUNCTION*/ 
+  // ***********************************************
   const handleSubmit = (e:any) => {
     e.preventDefault();
     if (!answer) {

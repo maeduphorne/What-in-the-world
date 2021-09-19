@@ -22,12 +22,13 @@ interface IAnswerProps{
 }
 
 const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) => {
-
   const [answer, setAnswer] = useState<string | number>('');
   const [currency] = currentCountry.currencies;
   const [languages, setLanguage] = useState<string[]>();
 
-   //|||||||||||||| DETERMINE USERS INPUTED ANSWER TO CORRECT/INCORRECT ||||||||||||||//
+   // *******************************************************
+    /*DETERMINE USERS INPUTED ANSWER TO CORRECT/INCORRECT*/ 
+   // *******************************************************
   const checkPopulation = () => {
     if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
       setAnswer(`Correct! The population of ${currentCountry.name} is ${currentCountry.population}!`);
@@ -52,7 +53,9 @@ const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) =
     }
   }
 
-   //|||||||||||||| DEFINE INPUT TYPE TO CHECK ANSWER ||||||||||||||//
+   // ***********************************************
+        /*DEFINE INPUT TYPE TO CHECK ANSWER*/ 
+   // ***********************************************
   const findAnswer = (quizQuestion: string) => {
     if (quizQuestion.includes(`population`)) {
       checkPopulation();
@@ -63,12 +66,13 @@ const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) =
     }
   }
 
-  //|||||||||||||| ITERATE OVER LANGUAGES OF GIVEN COUNTRY||||||||||||||//
+   // ***********************************************
+        /*ITERATE OVER LANGUAGES OF GIVEN COUNTRY*/ 
+   // ***********************************************
   const setLanguages = () => {
     const checkLanguage = currentCountry.languages.map(country => `${country.name} `)
     setLanguage(checkLanguage)
   }
-
 
   useEffect(() => {
     findAnswer(questions)

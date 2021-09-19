@@ -20,7 +20,6 @@ interface IQuizPageProps {
   name: string
 }
 
-
 const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   const [questions, setQuestions] = useState< string>('')
   const [country, setCountry] = useState<any>()
@@ -29,8 +28,10 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
     'What is the capital of',
     'How many countries border'
   ]
-  
-   //|||||||||||||| UPDATING STATE, GETTING LOCAL STORAGE ||||||||||||||//
+
+  // ***********************************************
+      /*UPDATING STATE, GETTING LOCAL STORAGE*/ 
+  // ***********************************************
   useEffect(() => {
     if (currentCountry && currentCountry.name) {
       setCountry(currentCountry);
@@ -41,12 +42,13 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
     }
   }, [])
 
-   //|||||||||||||| RANDOMIZING QUIZ QUESTIONS ||||||||||||||//
+  // ***********************************************
+          /*RANDOMIZING QUIZ QUESTIONS*/ 
+  // ***********************************************
   const getRandomElement = (name: string) => {
   const result = questionList[Math.floor(Math.random() * questionList.length)] +` ${name}`
    setQuestions((result));
   }
-  
   
   return (
     <div className="display-area quiz-display" >

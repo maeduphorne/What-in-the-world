@@ -30,8 +30,9 @@ const App = () => {
   const [displayCountry, setDisplayCountry] = useState<any>({});
   const history = useHistory();
 
-
-   //|||||||||||||| PASSING ALL COUNTRY NAMES AS AN OPTION ||||||||||||||//
+   // ***********************************************
+    /*PASSING ALL COUNTRY NAMES AS DROP DOWN OPTION*/ 
+   // ***********************************************
   const countryNames = countries.map(country => { 
     return (
       <option 
@@ -41,13 +42,17 @@ const App = () => {
     )
   })
 
-   //|||||||||||||| FIND COUNTRY WITH MATCHING NAME FROM DROP DOWN ||||||||||||||//
+   // ***********************************************
+    /*FIND COUNTRY WITH MATCHING NAME FROM DROP DOWN*/ 
+   // ***********************************************
   const getCurrentCountry = () => {
     const country = countries.find(currCountry => currCountry.name.includes(selectedCountry));
     setDisplayCountry(country);
   }
-
-   //|||||||||||||| URROR HANDLE FOR SELECT DROP DOWN ||||||||||||||//
+  
+   // ***********************************************
+        /*ERROR HANDLE FOR SELECT DROP DOWN*/ 
+   // ***********************************************
   const errorCheck = (e: any) => {
     e.preventDefault()
     if (selectedCountry.includes('Select A Country')) {
@@ -56,8 +61,10 @@ const App = () => {
         handleSubmit(e)
     }
   }
-
-   //|||||||||||||| BUTTON EVENT HANDLE HELPER FUNCTION  ||||||||||||||//
+  
+   // ***********************************************
+        /*BUTTON EVENT HANDLE HELPER FUNCTION*/ 
+   // ***********************************************
   const handleSubmit = (e:any) => {
     getCurrentCountry();
     history.push(`/${selectedCountry}`);
@@ -65,7 +72,9 @@ const App = () => {
     setError('');
   }
 
-   //|||||||||||||| UPDATING STATE ||||||||||||||//
+   // ***********************************************
+              /*UPDATING STATE*/ 
+   // ***********************************************
   useEffect(() => {
     setServerError('');
     apiCalls.fetchCountriesData()
@@ -76,7 +85,9 @@ const App = () => {
       })
   }, [history])
 
-   //|||||||||||||| SETTING LOCAL STORAGE  ||||||||||||||//
+   // ***********************************************
+             /*SETTING LOCAL STORAGE*/ 
+   // ***********************************************
   useEffect(() => {
     if (displayCountry.name) {
     localStorage.setItem('currentCountry', JSON.stringify(displayCountry));
