@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
+import peninsula from '../../assets/peninsula.jpg'
 import QuizPage from '../QuizPage/QuizPage';
 import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
@@ -107,7 +108,10 @@ const App = () => {
                 {error !== '' && <p className="input-error-message">{error}</p>}
               </form>
               </section>
-              <img src={mapIcon} alt="world map" className="worldMapImg" />
+              <div className="world-map" style={{
+                  backgroundImage: `${peninsula}`
+                }}>
+              </div>
             </main>
           )
         }
@@ -129,4 +133,6 @@ const App = () => {
   );
 }
 
+
+              {/* <img src={mapIcon} alt="world map" className="worldMapImg" /> */}
 export default App;

@@ -1,9 +1,15 @@
+
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+.world-map{
+  height: 100%;
+  width: 100%
 }
 
 Link {

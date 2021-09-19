@@ -1,6 +1,12 @@
 body {
   margin: 0;
   font-family: 'Open Sans Condensed', sans-serif;
+  background-image: url('./assets/peninsula.jpg');
+  background-color: #cccccc;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 code {
@@ -43,9 +49,10 @@ h1 {
   font-weight: bold;
 }
 
-.worldMapImg {
+/* .worldMapImg {
   width: 100vw;
-}
+  height:100vh;
+} */
 
 .quiz-display {
   background-color: #2383d02b;
