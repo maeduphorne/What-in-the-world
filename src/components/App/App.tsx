@@ -8,7 +8,7 @@ import apiCalls from '../../api/apiCalls';
 const { v4: uuidv4 } = require('uuid')
 
 
-interface IState{
+interface IAppState{
   countries: {
     name: string
     population: number
@@ -23,7 +23,7 @@ interface IState{
 }
 
 const App = () => {
-  const [countries, setCountries] = useState<IState['countries']>([]);
+  const [countries, setCountries] = useState<IAppState['countries']>([]);
   const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
   const [error, setError] = useState<string>('');
   const [serverError, setServerError] = useState<string>('');
