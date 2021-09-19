@@ -54,7 +54,7 @@ describe('500 Error page user flow', () => {
     cy.get('.country-dropdown')
         .should('be.visible')
         .should('have.value', '')
-})
+  })
 
 it('Should bring the user back to the home page by clicking the take me home button', () => {
   cy.get('button').click()
