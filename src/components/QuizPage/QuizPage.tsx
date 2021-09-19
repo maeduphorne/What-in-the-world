@@ -55,9 +55,19 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
       <section className="display-area" >
         {currentCountry && (
         <div className="quiz-contents">
-          {country && <img src={country.flag} alt={`${currentCountry.name} flag`} className="flag-img" />}
-         {country  && <h2>{questions}?</h2>}
-        {country  && <Form questions={`${questions} ${country.name}?`} currentCountry={country}/>}  
+          {country && 
+          <img src={country.flag} 
+          alt={`${currentCountry.name} flag`} 
+          className="flag-img" />}
+          {country && 
+          <h2>{
+          questions}?
+          </h2>}
+          {country &&
+           <Form questions={`${questions} 
+           ${country.name}?`} 
+           currentCountry={country}
+           />}  
         </div>
         )}
       </section>
