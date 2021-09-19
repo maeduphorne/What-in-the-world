@@ -30,6 +30,9 @@ const App = () => {
   const [displayCountry, setDisplayCountry] = useState<any>({})
   const history = useHistory();
 
+
+   //|||||||||||||| PASSING ALL COUNTRY NAMES AS AN OPTION ||||||||||||||//
+
   const countryNames = countries.map(country => { 
     return (
       <option 
@@ -38,13 +41,16 @@ const App = () => {
       </option> 
     )
   })
-     // ********* Function to get chosen country for QuizPage component ********//
+
+     //|||||||||||||| FUNCTION TO FIND COUNTRY WITH MATCHING NAME FROM DROP DOWN ||||||||||||||//
+
   const getCurrentCountry = () => {
     const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
     setDisplayCountry(country);
   }
 
-   // ******* Select error handle  ********//
+   //|||||||||||||| URROR HANDLE FOR SELECT DROP DOWN ||||||||||||||//
+
   const errorCheck = (e: any) => {
     e.preventDefault()
     if (selectedCountry.includes('Select A Country')) {
@@ -54,13 +60,16 @@ const App = () => {
     }
   }
 
-   // ******* Button click function  ********//
+  //|||||||||||||| BUTTON EVENT HANDLE HELPER FUNCTION  ||||||||||||||//
+
   const handleSubmit = (e:any) => {
     getCurrentCountry()
     history.push(`/${selectedCountry}`)
     setSelectedCountry('Select A Country') 
     setError('')
   }
+
+  //|||||||||||||| UPDATING STATE ||||||||||||||//
 
   useEffect(() => {
     setServerError('');
@@ -71,6 +80,8 @@ const App = () => {
         history.push(`/country/${err}`)
       })
   }, [])
+
+   //|||||||||||||| SETTING LOCAL STORAGE  ||||||||||||||//
 
   useEffect(() => {
     if (displayCountry.name) {
