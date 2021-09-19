@@ -90,7 +90,9 @@ const App = () => {
         <Route exact path="/" render={ () => {
           return (
             <main className="mainDisplay">
-              <section>
+              <p className="instructions">
+                Want to see how well you know the world? Select a country to test or expand your knowledge!
+              </p>
               <form 
                 className="country-selector">
                 <select 
@@ -107,7 +109,6 @@ const App = () => {
                 </button>
                 {error !== '' && <p className="input-error-message">{error}</p>}
               </form>
-              </section>
             </main>
           )
         }
