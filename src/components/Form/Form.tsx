@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Answer from '../Answers/Answers'
 import './Form.css';
 
-interface IState{
+interface IFormProps{
   questions: string
   currentCountry: {
     name: string
@@ -20,10 +20,12 @@ interface IState{
   } 
 }
 
-const Form:React.FC <IState> = ({ questions, currentCountry}) => {
+const Form:React.FC <IFormProps> = ({ questions, currentCountry}) => {
   const [answer,setAnswer] = useState<string>('');
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
+   // |||||||||||||| BUTTON SUBMIT HELPER FUNCTION |||||||||||||| //
+   
   const handleSubmit = (e:any) => {
     e.preventDefault()
     if (!answer) {
