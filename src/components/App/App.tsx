@@ -108,10 +108,6 @@ const App = () => {
                 {error !== '' && <p className="input-error-message">{error}</p>}
               </form>
               </section>
-              <div className="world-map" style={{
-                  backgroundImage: `${peninsula}`
-                }}>
-              </div>
             </main>
           )
         }

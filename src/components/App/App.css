@@ -12,6 +12,21 @@
   width: 100%
 }
 
+.mainDisplay{
+  height: 25vh;
+  width: 50vw;
+  background-color: white;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.country-selector{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 Link {
   text-decoration: none;
   color: white;
