@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, Route, Switch, useHistory } from 'react-router-dom';
-import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
 import QuizPage from '../QuizPage/QuizPage';
 import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
+import './App.css';
 const { v4: uuidv4 } = require('uuid')
 
 
@@ -24,10 +24,10 @@ interface IAppState{
 
 const App = () => {
   const [countries, setCountries] = useState<IAppState['countries']>([]);
-  const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
+  const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country');
   const [error, setError] = useState<string>('');
   const [serverError, setServerError] = useState<string>('');
-  const [displayCountry, setDisplayCountry] = useState<any>({})
+  const [displayCountry, setDisplayCountry] = useState<any>({});
   const history = useHistory();
 
 
@@ -45,7 +45,7 @@ const App = () => {
      //|||||||||||||| FUNCTION TO FIND COUNTRY WITH MATCHING NAME FROM DROP DOWN ||||||||||||||//
 
   const getCurrentCountry = () => {
-    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
+    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry));
     setDisplayCountry(country);
   }
 
@@ -63,10 +63,10 @@ const App = () => {
   //|||||||||||||| BUTTON EVENT HANDLE HELPER FUNCTION  ||||||||||||||//
 
   const handleSubmit = (e:any) => {
-    getCurrentCountry()
-    history.push(`/${selectedCountry}`)
-    setSelectedCountry('Select A Country') 
-    setError('')
+    getCurrentCountry();
+    history.push(`/${selectedCountry}`);
+    setSelectedCountry('Select A Country');
+    setError('');
   }
 
   //|||||||||||||| UPDATING STATE ||||||||||||||//

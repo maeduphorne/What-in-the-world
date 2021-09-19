@@ -34,11 +34,11 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   
   useEffect(() => {
     if (currentCountry && currentCountry.name) {
-      setCountry(currentCountry)
-      getRandomElement(currentCountry.name)
+      setCountry(currentCountry);
+      getRandomElement(currentCountry.name);
     } else {
-      setCountry(JSON.parse(localStorage.getItem('currentCountry')!))
-      getRandomElement(JSON.parse(localStorage.getItem('currentCountry')!).name)
+      setCountry(JSON.parse(localStorage.getItem('currentCountry')!));
+      getRandomElement(JSON.parse(localStorage.getItem('currentCountry')!).name);
     }
   }, [])
 
@@ -46,7 +46,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
 
   const getRandomElement = (name: string) => {
   const result = questionList[Math.floor(Math.random() * questionList.length)] +` ${name}`
-   setQuestions((result))
+   setQuestions((result));
   }
   
   
