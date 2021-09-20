@@ -13,21 +13,6 @@ code {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
-select {
-  margin-bottom: 1em;
-  padding: .25em;
-  border: 0;
-  border-bottom: 2px solid currentcolor; 
-  font-weight: bold;
-  letter-spacing: .15em;
-  border-radius: 0;
-}
-
 select:focus, select:active {
   outline: 0;
   border-bottom-color: #2383D0;
@@ -39,20 +24,6 @@ button {
   font-weight: bold;
   margin: 0 5px;
 }
-
-button:hover {
-  border: 2px solid #2383D0;
-  color: #2383D0;
-}
-
-h1 {
-  font-weight: bold;
-}
-
-/* .worldMapImg {
-  width: 100vw;
-  height:100vh;
-} */
 
 .quiz-display {
   background-color: #2383d02b;

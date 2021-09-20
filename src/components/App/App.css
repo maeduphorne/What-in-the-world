@@ -37,6 +37,7 @@
 .instructions{
   margin-top: 5px;
 }
+
 .country-selector{
   display: flex;
   justify-content: center;
@@ -54,6 +55,13 @@ button{
   height: 4vh;
   border-radius: 3px;
   font-size: larger;
+  font-weight: bold;
+}
+
+button:hover {
+  border: 2px solid black;
+  color: black;
+  background-color: #5f8c23b8;
 }
 
 h1 {
@@ -62,6 +70,11 @@ h1 {
   padding: 5px;
   text-shadow: 2px 2px 5px #345b1c;
   color: hsl(91deg 56% 11%);
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 select {
