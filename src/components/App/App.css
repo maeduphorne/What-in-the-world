@@ -61,16 +61,15 @@ button{
 }
 
 button:hover {
-  border: 2px solid black;
-  color: black;
-  background-color: #5f8c23b8;
+  border: 2px solid hsl(223deg 88% 66%);
+  color: hsl(223deg 88% 66%);
 }
 
 h1 {
   font-weight: bold;
   font-size: xxx-large;
   padding: 5px;
-  text-shadow: 2px 2px 5px #345b1c;
+  text-shadow: 2px 2px 5px hsl(223deg 78% 55%);
   color: white;
 }
 
