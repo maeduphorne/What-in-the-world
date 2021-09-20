@@ -31,9 +31,9 @@ const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) =
    // *******************************************************
   const checkPopulation = () => {
     if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
-      setAnswer(`Correct! The population of ${currentCountry.name} is ${currentCountry.population}!`);
+      setAnswer(`Correct! The population of ${currentCountry.name} is ${currentCountry.population.toLocaleString('en-US')}!`);
     } else {
-      setAnswer(`Incorrect- the population of ${currentCountry.name} is ${currentCountry.population}.`);
+      setAnswer(`Incorrect- the population of ${currentCountry.name} is ${currentCountry.population.toLocaleString('en-US')}.`);
     }
   }
 
@@ -81,9 +81,12 @@ const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) =
 
   return (
     <article className="answer-display">
-      <p className="user-guess">
-        Your guess was {guess}
-      </p>
+      {questions.includes('border') || questions.includes('population') && (
+        <p className="user-guess">
+          Your guess was {Number(guess).toLocaleString('en-US')}
+        </p>
+      )}
+      {questions.includes('capital') && <p className="user-guess"> Your guess was {guess} </p> }
       <h3>
         {answer}
       </h3>
