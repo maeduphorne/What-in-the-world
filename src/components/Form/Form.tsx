@@ -47,6 +47,7 @@ const Form:React.FC <IFormProps> = ({ questions, currentCountry}) => {
         <input type="text" 
          className='answer-input' 
          name='answer' value={answer} 
+         placeholder="Make a guess here!"
          onChange={(e:any) => setAnswer(e.target.value.match(/[A-Za-z0-9]+/g)) }
          required pattern="[A-Za-z0-9]+" />
          </label>

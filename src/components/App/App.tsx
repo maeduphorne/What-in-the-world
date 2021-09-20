@@ -149,6 +149,4 @@ const App = () => {
   );
 }
 
-
-              {/* <img src={mapIcon} alt="world map" className="worldMapImg" /> */}
 export default App;

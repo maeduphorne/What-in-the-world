@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Form from '../Form/Form'
+import './QuizPage.css'
 
 interface IQuizPageProps {
   currentCountry: {
@@ -51,7 +52,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   }
   
   return (
-    <div className="quiz-display" >
+    <div className="display-area quiz-display" >
       <section className="display-area" >
         {currentCountry && (
         <div className="quiz-contents">
