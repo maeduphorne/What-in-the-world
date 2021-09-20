@@ -75,7 +75,6 @@ It is an interactive application that allows users to the world's countries expl
   + [Farangiz Akhatova](https://github.com/Fakhatova)
   + [Mae Duphorne](https://github.com/maeduphorne)
   
-
 ## Reflections And Wins
   +
 
