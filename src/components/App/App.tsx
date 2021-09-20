@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, Route, Switch, useHistory } from 'react-router-dom';
 import mapIcon from '../../assets/WorldMap.jpg';
+import peninsula from '../../assets/peninsula.jpg'
 import QuizPage from '../QuizPage/QuizPage';
 import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
@@ -105,7 +106,12 @@ const App = () => {
         <Route exact path="/" render={ () => {
           return (
             <main className="mainDisplay">
-              <section>
+              <p className="instructions-question">
+                Want to see how well you know the world?
+              </p>
+              <p className="instructions"> 
+                Select a country to test or expand your knowledge!
+              </p>
               <form 
                 className="country-selector">
                 <select 
@@ -122,8 +128,6 @@ const App = () => {
                 </button>
                 {error !== '' && <p className="input-error-message">{error}</p>}
               </form>
-              </section>
-              <img src={mapIcon} alt="world map" className="worldMapImg" />
             </main>
           )
         }

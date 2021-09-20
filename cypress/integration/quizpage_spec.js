@@ -42,18 +42,16 @@ describe('Quiz Page User Flow', () => {
     it('Should bring the user back to the home page by clicking the home button', () => {
         cy.visit('http://localhost:3000/')
         cy.get('h1').contains('What In The World')
-        cy.get('.worldMapImg').should('be.visible')
         cy.get('.country-dropdown')
-          .should('be.visible')
-          .should('have.value', '')
+            .should('be.visible')
+            .should('have.value', '')
     })
 
     it('Should bring the user back to the home page by clicking the Header', () => {
         cy.visit('http://localhost:3000/')
         cy.get('h1').contains('What In The World')
-        cy.get('.worldMapImg').should('be.visible')
         cy.get('.country-dropdown')
-          .should('be.visible')
-          .should('have.value', '')
+            .should('be.visible')
+            .should('have.value', '')
     })
 })
