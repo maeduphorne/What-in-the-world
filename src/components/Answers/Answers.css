@@ -1,0 +1,6 @@
+/* GUESS AND STATS TEXT */
+.country-stats, .user-guess {
+    font-size: large;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}

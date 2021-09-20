@@ -38,28 +38,30 @@ const Form:React.FC <IFormProps> = ({ questions, currentCountry}) => {
   return (
     <div className="display-area">
       {(isSubmitted && answer) && 
-         <Answer guess={answer} 
-         currentCountry={currentCountry} 
-         questions={questions}/> }
+        <Answer 
+          guess={answer} 
+          currentCountry={currentCountry} 
+          questions={questions}
+        /> }
       {!isSubmitted && (
-      <form className="guess-form">
-        <label>
-        <input type="text" 
-         className='answer-input' 
-         name='answer' value={answer} 
-         placeholder="Make a guess here!"
-         onChange={(e:any) => setAnswer(e.target.value.match(/[A-Za-z0-9]+/g)) }
-         required pattern="[A-Za-z0-9]+" />
-         </label>
-        <button className='submit-button' 
-         onClick={handleSubmit}>
-         Submit Answer
-        </button>
-      </form>
+        <form className="guess-form">
+          <label>
+            <input type="text" 
+              className='answer-input' 
+              name='answer' value={answer} 
+              placeholder="Make a guess here!"
+              onChange={(e:any) => setAnswer(e.target.value.match(/[A-Za-z0-9]+/g)) }
+              required pattern="[A-Za-z0-9]+" 
+            />
+          </label>
+          <button className='submit-button' onClick={handleSubmit}>
+            Submit Answer
+          </button>
+        </form>
       )}
       {answer === null && 
         <p className="input-error-message">
-         Please only enter valid characters in your guess!
+          Please only enter valid characters in your guess!
         </p>} 
     </div>
   )

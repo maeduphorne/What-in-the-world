@@ -8,11 +8,9 @@ interface IErrorProps{
 }
 
 const ErrorHandling:React.FC<IErrorProps> = ({errorMessage}) => {
-
   return (
     <section className="error-display" >
-      <img src={errorIcon} alt="error icon" 
-      className="error-img" />
+      <img src={errorIcon} alt="error icon" className="error-img" />
       <p>
         There was an issue!
       </p>
