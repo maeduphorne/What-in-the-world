@@ -22,6 +22,7 @@ They are taken to a randomized question and asked to input and submit a guess.
 They are then taken to a view that lists if their answer is correct or incorrect and some other fun facts about that particular country.
 They're able to return to the home page by clicking the What in the World text and select another country to continue learning!
 
+
 ## Setup Instructions
   + Run `git clone https://github.com/MTCawthray/What-in-the-world.git` into your local machine.
   + Run `npm install` 
@@ -36,7 +37,11 @@ They're able to return to the home page by clicking the What in the World text a
 
   
 ### Using The App
- +
+ + On page load users can see instructions and can select country they want quiz themselves for. 
+ + Upon submit button it will take them to a new page with question about selected country 
+ + They can answer by inputing their guess and submitting it
+ + Upon submition of your guess application will give you feedback and more information about country you chosed to quiz yourselve for.
+ + You can go back to home page simply clicking on `take me home button`
 
 ## Learning goals
   + 
