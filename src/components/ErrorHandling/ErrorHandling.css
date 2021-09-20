@@ -6,4 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-color: #ffffff7d;
+  padding: 30px;
+  border-radius: 5px;
 }
