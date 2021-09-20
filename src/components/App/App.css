@@ -8,6 +8,10 @@
   height: 100vh;
 }
 
+.App::-webkit-scrollbar {
+  display: none;
+}
+
 /* HEADER */
 h1 {
   font-weight: 900;
