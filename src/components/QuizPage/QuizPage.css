@@ -1,11 +1,5 @@
-.quiz-contents {
-  height: 65vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
 
+/* QUIZPAGE OUTER BOX */
 .quiz-display {
   background-color: #2383d05e;
   border: 1px solid rgba(0, 0, 0, 0.297);
@@ -17,12 +11,22 @@
   padding-top: 2vh;
 }
 
+/* QUIZPAGE FLAG AND FORM WRAPPER BOX */
+.quiz-contents {
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .flag-img {
   height: 38vh;
   width: 32vw;
   margin: 4vh;
 }
 
+/* QUIZPAGE INNER FORM/ANSWER BOX */
 .form-styling {
   display: flex;
   flex-direction: column;
@@ -33,15 +37,11 @@
   border-radius: 3px;
 }
 
+/* QUESTION HEADER */
 h2 {
   margin-top: 1vh;
 }
 
-.country-stats, .user-guess{
-  font-size: large;
-  margin-top: 1vh;
-  margin-bottom: 2vh;
-}
 
 
 

@@ -13,9 +13,4 @@ code {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-select:focus, select:active {
-  outline: 0;
-  border-bottom-color: #2383D0;
-}
-
 

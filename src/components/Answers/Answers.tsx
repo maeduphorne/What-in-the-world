@@ -91,13 +91,15 @@ const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) =
         {answer}
       </h3>
       <section className="extra-facts">
-      <p className='country-stats'>
-        {currentCountry.name} is located in {currentCountry.subregion}.
-        This country has the currency of {currency.name} and the population speaks {languages}
-      </p>
+        <p className='country-stats'>
+          {currentCountry.name} is located in {currentCountry.subregion}.
+          This country has the currency of {currency.name} and the population speaks {languages}.
+        </p>
       </section>
       <Link to="/" >
-      <button className='home-btn'>Take Me Home</button>
+        <button className='home-btn'>
+          Take Me Home
+        </button>
       </Link>
     </article>
   )

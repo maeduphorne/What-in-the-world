@@ -47,7 +47,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
           /*RANDOMIZING QUIZ QUESTIONS*/ 
   // ***********************************************
   const getRandomElement = (name: string) => {
-  const result = questionList[Math.floor(Math.random() * questionList.length)] +` ${name}`
+    const result = questionList[Math.floor(Math.random() * questionList.length)] +` ${name}`
     setQuestions((result));
   }
   

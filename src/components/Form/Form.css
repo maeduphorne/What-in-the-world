@@ -1,8 +1,4 @@
-.input-error-message {
-  color: red;
-  font-weight: bolder;
-}
-
+/* GUESS INPUT LINE */
 .answer-input {
   background-color: rgb(255 255 255 / 0%);
   margin-bottom: 1em;
@@ -16,15 +12,25 @@
   text-align: center;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
+/* ERROR MESSAGE */
+.input-error-message {
+  color: red;
+  font-weight: bolder;
+}
+
+/* GUESS INPUT & BUTTON WRAP */
 .guess-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+
+
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 900px) {
