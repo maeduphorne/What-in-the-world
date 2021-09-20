@@ -3,8 +3,9 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
+  height: 100vh;
 }
 
 .world-map{
@@ -13,21 +14,62 @@
 }
 
 .mainDisplay{
-  height: 25vh;
-  width: 50vw;
-  background-color: white;
+  height: 35vh;
+  width: 55vw;
+  border-radius: 3px;
+  background-color: #ffffff7d;
   display:flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  margin-top: 15vh;
 }
 
+.instructions, .instructions-question {
+  color:black;
+  font-size: x-large;
+}
+
+.instructions-question{
+  margin: 0
+}
+
+.instructions{
+  margin-top: 5px;
+}
 .country-selector{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
+
 Link {
   text-decoration: none;
   color: white;
+}
+
+button{
+  width: 18vw;
+  height: 4vh;
+  border-radius: 3px;
+  font-size: larger;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: xxx-large;
+  padding: 5px;
+  text-shadow: 2px 2px 5px #345b1c;
+  color: hsl(91deg 56% 11%);
+}
+
+select {
+  margin-bottom: 1em;
+  padding: .25em;
+  height: 4vh;
+  border: 0;
+  border-bottom: 2px solid currentcolor; 
+  letter-spacing: .15em;
+  border-radius: 0;
 }

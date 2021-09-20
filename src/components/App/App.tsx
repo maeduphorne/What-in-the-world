@@ -90,8 +90,11 @@ const App = () => {
         <Route exact path="/" render={ () => {
           return (
             <main className="mainDisplay">
-              <p className="instructions">
-                Want to see how well you know the world? Select a country to test or expand your knowledge!
+              <p className="instructions-question">
+                Want to see how well you know the world?
+              </p>
+              <p className="instructions"> 
+                Select a country to test or expand your knowledge!
               </p>
               <form 
                 className="country-selector">
