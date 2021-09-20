@@ -92,8 +92,9 @@ button {
   border: 2px solid black;
   background-color: rgba(255, 255, 255, 0);
   font-weight: bold;
-  margin: 0 5px;
 }
+
+
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 900px) {
@@ -108,16 +109,10 @@ button {
 
 @media screen and (max-width: 760px) {
   button {
-    font-size: small;
+    font-size: x-small;
   }
 
   .instructions, .instructions-question {
     font-size: large;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  button {
-    font-size: x-small;
   }
 }
