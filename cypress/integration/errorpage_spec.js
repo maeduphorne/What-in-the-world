@@ -17,7 +17,6 @@ describe('404 Error page user flow', () => {
   it('Should bring the user back to the home page by clicking the Header', () => {
     cy.get('.home-click').click()
     cy.get('h1').contains('What In The World')
-    cy.get('.worldMapImg').should('be.visible')
     cy.get('.country-dropdown')
       .should('be.visible')
       .should('have.value', '')
@@ -26,7 +25,6 @@ describe('404 Error page user flow', () => {
   it('Should bring the user back to the home page by clicking the take me home button', () => {
     cy.get('button').click()
     cy.get('h1').contains('What In The World')
-    cy.get('.worldMapImg').should('be.visible')
     cy.get('.country-dropdown')
       .should('be.visible')
       .should('have.value', '')
@@ -50,19 +48,17 @@ describe('500 Error page user flow', () => {
   it('Should bring the user back to the home page by clicking the Header', () => {
     cy.get('.home-click').click()
     cy.get('h1').contains('What In The World')
-    cy.get('.worldMapImg').should('be.visible')
     cy.get('.country-dropdown')
-        .should('be.visible')
-        .should('have.value', '')
+      .should('be.visible')
+      .should('have.value', '')
   })
 
   it('Should bring the user back to the home page by clicking the take me home button', () => {
     cy.get('button').click()
     cy.get('h1').contains('What In The World')
-    cy.get('.worldMapImg').should('be.visible')
     cy.get('.country-dropdown')
-        .should('be.visible')
-        .should('have.value', '')
+      .should('be.visible')
+      .should('have.value', '')
   })
 
 });
