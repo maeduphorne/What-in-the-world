@@ -7,7 +7,7 @@
   height: 80vh;
   width: 75vw;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
-  overflow: hidden;
+  overflow: scroll;
   padding-top: 2vh;
 }
 
