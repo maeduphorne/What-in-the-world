@@ -6,7 +6,7 @@ import QuizPage from '../QuizPage/QuizPage';
 import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
 import './App.css';
-const { v4: uuidv4 } = require('uuid')
+const { v4: uuidv4 } = require('uuid');
 
 
 interface IAppState{
@@ -59,7 +59,7 @@ const App = () => {
     if (selectedCountry.includes('Select A Country')) {
       setError('Please select a country')
     } else {
-        handleSubmit(e)
+      handleSubmit(e)
     }
   }
   
@@ -87,11 +87,11 @@ const App = () => {
   }, [history])
 
    // ***********************************************
-             /*SETTING LOCAL STORAGE*/ 
+              /*SETTING LOCAL STORAGE*/ 
    // ***********************************************
   useEffect(() => {
     if (displayCountry.name) {
-    localStorage.setItem('currentCountry', JSON.stringify(displayCountry));
+      localStorage.setItem('currentCountry', JSON.stringify(displayCountry));
     }
   }, [displayCountry])
   
@@ -112,18 +112,14 @@ const App = () => {
               <p className="instructions"> 
                 Select a country to test or expand your knowledge!
               </p>
-              <form 
-                className="country-selector">
-                <select 
-                  className="country-dropdown"
-                  onChange={(e) => setSelectedCountry(e.target.value)}>
-                    <option value=''>
+              <form className="country-selector">
+                <select className="country-dropdown" onChange={(e) => setSelectedCountry(e.target.value)}>
+                  <option value=''>
                     {selectedCountry}
-                    </option>
+                  </option>
                   options={countryNames} 
                 </select>
-                <button onClick={(e) => errorCheck(e)} 
-                  className="dropdown-btn">
+                <button onClick={(e) => errorCheck(e)} className="dropdown-btn">
                   Submit Country
                 </button>
                 {error !== '' && <p className="input-error-message">{error}</p>}
@@ -135,14 +131,17 @@ const App = () => {
         <Route exact path="/:country" render={ ({ match }) => {
           return ( 
             <QuizPage 
-            name="country"
-            currentCountry={displayCountry}
-            country={displayCountry.name}
+              name="country"
+              currentCountry={displayCountry}
+              country={displayCountry.name}
             />)
           }
         }/>
         <Route render={ () => {
-          return <ErrorHandling errorMessage={serverError} /> 
+          return (
+            <ErrorHandling 
+              errorMessage={serverError} 
+            />) 
         }}/>
       </Switch>
     </div>
