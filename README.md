@@ -33,6 +33,8 @@ It is an interactive application that allows users to explore the world's countr
  + They are taken to a randomized question and asked to input and submit a guess. 
  + They are then taken to a view that lists if their answer is correct or incorrect and some other fun facts about that particular country.
  + They're able to return to the home page by clicking the `What in the World` text or `Take me home` button and select another country to continue learning!
+  <br>
+ + Or visit our [deployed link](https://what-in-the-world-stretch.herokuapp.com/)
 
 ## Learning goals
   + Learning and implementing unfamiliar technology, outside of our [Turing School of Software and Design](turing.edu) curriculum.
