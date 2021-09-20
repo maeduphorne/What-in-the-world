@@ -49,7 +49,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   
   
   return (
-    <div className="display-area quiz-display" >
+    <div className="quiz-display" >
       <section className="display-area" >
         {currentCountry && (
         <div className="quiz-contents">
