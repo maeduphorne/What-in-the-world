@@ -42,7 +42,7 @@ const Form:React.FC <IFormProps> = ({ questions, currentCountry}) => {
          currentCountry={currentCountry} 
          questions={questions}/> }
       {!isSubmitted && (
-      <form>
+      <form className="guess-form">
         <label>
         <input type="text" 
          className='answer-input' 
