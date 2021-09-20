@@ -47,17 +47,19 @@ They're able to return to the home page by clicking the What in the World text a
 ## Technologies used
   + React 
   + React Hooks 
+  + React Router
   + TypeScript 
   + Cypress
   + HTML
   + CSS
   
 ## Tools used
-  + Zoom communitaions
+  + Zoom communications
   + GitHub 
   + Notion 
   + Miro 
   + Slack 
+  + Heroku
 
 ## Contributors
   + [Mark Cawthray](https://github.com/MTCawthray)
