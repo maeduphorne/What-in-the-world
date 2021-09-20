@@ -16,7 +16,7 @@
 What in the world?!
 With such a vast world out there, don't we all have a little more to learn?
 What in the World is an application designed to help users of all ages learn more about different countries in the world! 
-It is an interactive application that allows users to the world's countries explore from anywhere. 
+It is an interactive application that allows users to explore the world's countries from anywhere. 
 
 ## Setup Instructions
   + Run `git clone https://github.com/MTCawthray/What-in-the-world.git` into your local machine.
@@ -76,6 +76,11 @@ It is an interactive application that allows users to the world's countries expl
   + [Mae Duphorne](https://github.com/maeduphorne)
   
 ## Reflections And Wins
-  +
+
+  + This was our first time using Typescript in any of our projects. The learning curve was steep, which was challenging for the one week time-frame we were working with. We all took the time in the first few days to teach ourselves this technology and familiarize ourselves with the documentation. After the initial adjustment period, we were able to create an efficient workflow to finish the application in a manor we were proud of!
+
+  + We took our stretch project a step further in taking on the extra step to self-teach React Hooks. This allowed us to better utilize materials available on TypeScript and to modernize the way we are writing code in React.
+
+  + We used creative problem solving to reach for a previously taught concept of local storage. We decided to take this path instead of fetching single countries in order to avoid numerous fetch calls. In doing so, we we’re attempting to keep an eye on best business practices.
 
   [Return to top](#what-in-the-world)
