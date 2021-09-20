@@ -77,7 +77,7 @@ const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) =
   useEffect(() => {
     findAnswer(questions)
     setLanguages()
-  })
+  }, [])
 
   return (
     <article className="answer-display">
