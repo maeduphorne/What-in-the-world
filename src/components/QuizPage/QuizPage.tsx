@@ -48,12 +48,11 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   // ***********************************************
   const getRandomElement = (name: string) => {
   const result = questionList[Math.floor(Math.random() * questionList.length)] +` ${name}`
-   setQuestions((result));
+    setQuestions((result));
   }
   
   return (
     <div className="quiz-display" >
-      {/* <section className="display-area" > */}
         {currentCountry && (
         <div className="quiz-contents">
           {country && <img src={country.flag} alt={`${currentCountry.name} flag`} className="flag-img" />}
@@ -63,7 +62,6 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
           </div>  
         </div>
         )}
-      {/* </section> */}
     </div>
   )
 }

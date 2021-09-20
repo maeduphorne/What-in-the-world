@@ -56,6 +56,7 @@ button{
   border-radius: 3px;
   font-size: larger;
   font-weight: bold;
+  margin-bottom: 2vh;
 }
 
 button:hover {
@@ -69,7 +70,7 @@ h1 {
   font-size: xxx-large;
   padding: 5px;
   text-shadow: 2px 2px 5px #345b1c;
-  color: hsl(91deg 56% 11%);
+  color: white;
 }
 
 a {
