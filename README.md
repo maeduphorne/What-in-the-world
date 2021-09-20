@@ -20,15 +20,13 @@ It is an interactive application that allows users to explore the world's countr
 
 ## Setup Instructions
   + Run `git clone https://github.com/MTCawthray/What-in-the-world.git` into your local machine.
-  + Run `npm install` 
+  + Run `npm install` to install dependencies 
   + Run `npm start` to open page in the browser
   + Run `npm run cypress` to test Cypress
   
 ## Examples
 
-[image goes here]()
-
-[gif goes here]()
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/81891209/134076601-8f53625b-3a65-4b9e-9e08-914bfb4f0281.gif)
 
 ### Using The App
  + When loading the page, a user is able to view a world map and select which country they would like to learn about. 
@@ -41,17 +39,17 @@ It is an interactive application that allows users to explore the world's countr
     <br>
     + Elected to learn TypeScript in this project.
     + Self teach and utilize React-Hooks.
-    + Generated and executed project Minimum Viable Product, design and functionality requirements for entire application.
     <br>
-  + Effectively perform End-To-End Testing by utilizing Cypress.
+  + Generating and executing project Minimum Viable Product, design and functionality requirements for entire application.
+  + Effectively perform End-To-End Testing by utilizing Cypress Testing Library.
   + Continue familiarizing ourselves building responsive web apps utilizing React framework.
 
 ## Future features
-  + Add more questions to make application more robust
-  + Filtering Countries by region or first letter
-  + Add interactive Map for UI to be more engaging with UX
-  + Add dynamic animation to change background images 
-  + Add score keeping functionality
+  + Add more questions to make application more robust.
+  + Filter Countries by region or first letter.
+  + Add interactive Map for UI to be more engaging with UX.
+  + Add dynamic animation to change background images.
+  + Add score keeping functionality.
 
 ## Technologies used
   + React 
