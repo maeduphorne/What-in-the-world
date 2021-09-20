@@ -17,10 +17,6 @@ What in the world?!
 With such a vast world out there, don't we all have a little more to learn?
 What in the World is an application designed to help users of all ages learn more about different countries in the world! 
 It is an interactive application that allows users to the world's countries explore from anywhere. 
-When loading the page, a user is able to view a world map and select which country they would like to learn about. 
-They are taken to a randomized question and asked to input and submit a guess. 
-They are then taken to a view that lists if their answer is correct or incorrect and some other fun facts about that particular country.
-They're able to return to the home page by clicking the What in the World text and select another country to continue learning!
 
 
 ## Setup Instructions
@@ -37,17 +33,27 @@ They're able to return to the home page by clicking the What in the World text a
 
   
 ### Using The App
- + On page load users can see instructions and can select country they want quiz themselves for. 
- + Upon submit button it will take them to a new page with question about selected country 
- + They can answer by inputing their guess and submitting it
- + Upon submition of your guess application will give you feedback and more information about country you chosed to quiz yourselve for.
- + You can go back to home page simply clicking on `take me home button`
+ When loading the page, a user is able to view a world map and select which country they would like to learn about. 
+They are taken to a randomized question and asked to input and submit a guess. 
+They are then taken to a view that lists if their answer is correct or incorrect and some other fun facts about that particular country.
+They're able to return to the home page by clicking the What in the World text and select another country to continue learning!
 
 ## Learning goals
-  + 
-  
+  + Learning and implementing unfamiliar technology, outside of our [Turing School of Software and Design](turing.edu) curriculum.
+    <br>
+    + Elected to learn TypeScript in this project.
+    + Self teach and utilize React-Hooks.
+    + Generated and executed project Minimum Viable Product, design and functionality requirements for entire application.
+    <br>
+  + Effectively perform End-To-End Testing by utilizing Cypress.
+  + Continue familiarizing ourselves building responsive web apps utilizing React framework.
+
 ## Future features
-  + 
+  + Add more questions to make application more robust
+  + Filtering Countries by region or first letter
+  + Add interactive Map for UI to be more engaging with UX
+  + Add dynamic animation to change background images 
+  + Add score keeping functionality
 
 ## Technologies used
   + React 
