@@ -78,7 +78,7 @@ a {
   color: black;
 }
 
-select {
+.country-dropdown {
   margin-bottom: 1em;
   padding: .25em;
   height: 4vh;
@@ -88,3 +88,36 @@ select {
   border-radius: 0;
 }
 
+button {
+  border: 2px solid black;
+  background-color: rgba(255, 255, 255, 0);
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 900px) {
+  button {
+    font-size: medium;
+  }
+
+  .country-dropdown {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  button {
+    font-size: small;
+  }
+
+  .instructions, .instructions-question {
+    font-size: large;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  button {
+    font-size: x-small;
+  }
+}

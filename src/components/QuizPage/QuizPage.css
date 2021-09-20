@@ -24,6 +24,7 @@
 }
 
 .form-styling {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   border: 2px solid black;
@@ -36,4 +37,10 @@
 h2 {
   margin-top: 1vh;
   magrin-botton: 2vh;
+}
+
+.country-stats, .user-guess{
+  font-size: large;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
 }
