@@ -24,6 +24,7 @@
 .flag-img {
   height: 45vh;
   width: 35vw;
+  margin: 4vh;
 }
 
 .form-styling {
@@ -31,8 +32,8 @@
   justify-content: center;
   border: 2px solid black;
   background-color: #ffffff8a;
-  height: 20vh;
-  width: 40vw;
+  height: 55vh;
+  width: 60vw;
   border-radius: 3px;
   
 }
