@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, Route, Switch, useHistory } from 'react-router-dom';
-import './App.css';
 import mapIcon from '../../assets/WorldMap.jpg';
+import peninsula from '../../assets/peninsula.jpg'
 import QuizPage from '../QuizPage/QuizPage';
 import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
+import './App.css';
 const { v4: uuidv4 } = require('uuid')
 
 
-interface IState{
+interface IAppState{
   countries: {
     name: string
     population: number
@@ -23,13 +24,16 @@ interface IState{
 }
 
 const App = () => {
-  const [countries, setCountries] = useState<IState['countries']>([]);
-  const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country')
+  const [countries, setCountries] = useState<IAppState['countries']>([]);
+  const [selectedCountry, setSelectedCountry]= useState<any>('Select A Country');
   const [error, setError] = useState<string>('');
   const [serverError, setServerError] = useState<string>('');
-  const [displayCountry, setDisplayCountry] = useState<any>({})
+  const [displayCountry, setDisplayCountry] = useState<any>({});
   const history = useHistory();
 
+   // ***********************************************
+    /*PASSING ALL COUNTRY NAMES AS DROP DOWN OPTION*/ 
+   // ***********************************************
   const countryNames = countries.map(country => { 
     return (
       <option 
@@ -38,13 +42,18 @@ const App = () => {
       </option> 
     )
   })
-     // ********* Function to get chosen country for QuizPage component ********//
+
+   // ***********************************************
+    /*FIND COUNTRY WITH MATCHING NAME FROM DROP DOWN*/ 
+   // ***********************************************
   const getCurrentCountry = () => {
-    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry))
+    const country = countries.find(currCountry => currCountry.name.includes(selectedCountry));
     setDisplayCountry(country);
   }
-
-   // ******* Select error handle  ********//
+  
+   // ***********************************************
+        /*ERROR HANDLE FOR SELECT DROP DOWN*/ 
+   // ***********************************************
   const errorCheck = (e: any) => {
     e.preventDefault()
     if (selectedCountry.includes('Select A Country')) {
@@ -53,16 +62,20 @@ const App = () => {
         handleSubmit(e)
     }
   }
-
-   // ******* Button click function  ********//
+  
+   // ***********************************************
+        /*BUTTON EVENT HANDLE HELPER FUNCTION*/ 
+   // ***********************************************
   const handleSubmit = (e:any) => {
-    getCurrentCountry()
-    console.log(selectedCountry);
-    history.push(`/${selectedCountry}`)
-    setSelectedCountry('Select A Country') 
-    setError('')
+    getCurrentCountry();
+    history.push(`/${selectedCountry}`);
+    setSelectedCountry('Select A Country');
+    setError('');
   }
 
+   // ***********************************************
+              /*UPDATING STATE*/ 
+   // ***********************************************
   useEffect(() => {
     setServerError('');
     apiCalls.fetchCountriesData()
@@ -71,8 +84,11 @@ const App = () => {
         setServerError(err)
         history.push(`/country/${err}`)
       })
-  }, [])
+  }, [history])
 
+   // ***********************************************
+             /*SETTING LOCAL STORAGE*/ 
+   // ***********************************************
   useEffect(() => {
     if (displayCountry.name) {
     localStorage.setItem('currentCountry', JSON.stringify(displayCountry));
@@ -90,7 +106,12 @@ const App = () => {
         <Route exact path="/" render={ () => {
           return (
             <main className="mainDisplay">
-              <section>
+              <p className="instructions-question">
+                Want to see how well you know the world?
+              </p>
+              <p className="instructions"> 
+                Select a country to test or expand your knowledge!
+              </p>
               <form 
                 className="country-selector">
                 <select 
@@ -107,8 +128,6 @@ const App = () => {
                 </button>
                 {error !== '' && <p className="input-error-message">{error}</p>}
               </form>
-              </section>
-              <img src={mapIcon} alt="world map" className="worldMapImg" />
             </main>
           )
         }

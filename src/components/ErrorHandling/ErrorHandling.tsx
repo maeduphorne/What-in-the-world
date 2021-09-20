@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ErrorHandling.css';
 import errorIcon from '../../assets/error.png';
+import './ErrorHandling.css';
 
-interface IProps{
-  errorMessage: string 
+interface IErrorProps{
+  errorMessage: string;
 }
 
-const ErrorHandling:React.FC<IProps> = ({errorMessage}) => {
+const ErrorHandling:React.FC<IErrorProps> = ({errorMessage}) => {
 
   return (
     <section className="error-display" >
-      <img src={errorIcon} alt="error icon" className="error-img" />
+      <img src={errorIcon} alt="error icon" 
+      className="error-img" />
       <p>
         There was an issue!
       </p>
-      <p>
+      <p className="error-message">
         {errorMessage}
       </p>
       <Link to="/" >

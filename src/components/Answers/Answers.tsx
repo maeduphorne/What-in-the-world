@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Answers.css';
 
-interface Iprops{
+interface IAnswerProps{
   questions: string
   guess: string 
   currentCountry: {
@@ -21,17 +21,19 @@ interface Iprops{
   } 
 }
 
-const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
+const Answers: React.FC<IAnswerProps> = ({ currentCountry, questions, guess }) => {
+  const [answer, setAnswer] = useState<string | number>('');
+  const [currency] = currentCountry.currencies;
+  const [languages, setLanguage] = useState<string[]>();
 
-  const [answer, setAnswer] = useState<string | number>('')
-  const [currency] = currentCountry.currencies
-  const [languages, setLanguage] = useState<string[]>()
-
+   // *******************************************************
+    /*DETERMINE USERS INPUTED ANSWER TO CORRECT/INCORRECT*/ 
+   // *******************************************************
   const checkPopulation = () => {
     if (Number(guess) < (currentCountry.population + 50000) && Number(guess) > (currentCountry.population - 50000)) {
-      setAnswer(`Correct! The population of ${currentCountry.name} is ${currentCountry.population}!`);
+      setAnswer(`Correct! The population of ${currentCountry.name} is ${currentCountry.population.toLocaleString('en-US')}!`);
     } else {
-      setAnswer(`Incorrect- the population of ${currentCountry.name} is ${currentCountry.population}.`);
+      setAnswer(`Incorrect- the population of ${currentCountry.name} is ${currentCountry.population.toLocaleString('en-US')}.`);
     }
   }
 
@@ -51,6 +53,9 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
     }
   }
 
+   // ***********************************************
+        /*DEFINE INPUT TYPE TO CHECK ANSWER*/ 
+   // ***********************************************
   const findAnswer = (quizQuestion: string) => {
     if (quizQuestion.includes(`population`)) {
       checkPopulation();
@@ -60,6 +65,10 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
       checkBorders();
     }
   }
+
+   // ***********************************************
+        /*ITERATE OVER LANGUAGES OF GIVEN COUNTRY*/ 
+   // ***********************************************
   const setLanguages = () => {
     const checkLanguage = currentCountry.languages.map(country => `${country.name} `)
     setLanguage(checkLanguage)
@@ -72,20 +81,23 @@ const Answers: React.FC<Iprops> = ({ currentCountry, questions, guess }) => {
 
   return (
     <article className="answer-display">
-      <p className="user-guess">
-        Your guess was {guess}
-      </p>
+      {questions.includes('border') || questions.includes('population') && (
+        <p className="user-guess">
+          Your guess was {Number(guess).toLocaleString('en-US')}
+        </p>
+      )}
+      {questions.includes('capital') && <p className="user-guess"> Your guess was {guess} </p> }
       <h3>
         {answer}
       </h3>
       <section className="extra-facts">
-      <p>
+      <p className='country-stats'>
         {currentCountry.name} is located in {currentCountry.subregion}.
-        Country has currency of {currency.name} and population speaks {languages}!
+        This country has the currency of {currency.name} and the population speaks {languages}
       </p>
       </section>
       <Link to="/" >
-      <button>Take Me Home</button>
+      <button className='home-btn'>Take Me Home</button>
       </Link>
     </article>
   )

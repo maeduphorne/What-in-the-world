@@ -4,9 +4,8 @@ describe('Main Page Render', () => {
         cy.FetchData('GET', 'https://restcountries.eu/rest/v2/all')
         });
 
-    it('Should have a header with the App\'s name on page load & an image of a map', () => {
+    it('Should have a header with the App\'s name on page load', () => {
         cy.get('h1').contains('What In The World')
-        cy.get('.worldMapImg').should('be.visible')
     })
 
     it('Should display a drop down menu on load', () => {

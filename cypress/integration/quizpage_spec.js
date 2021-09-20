@@ -3,16 +3,16 @@ describe('Quiz Page User Flow', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000/')
         cy.get('.country-dropdown')
-            .select('Uzbekistan')
-            .get('.dropdown-btn').click()
+          .select('Uzbekistan')
+          .get('.dropdown-btn').click()
         cy.url().should('eq', 'http://localhost:3000/Uzbekistan')
     })
 
     it('Should render a page displaying a quiz question about the selected country & answer field', () => {
         cy.get('h1').contains('What In The World')
         cy.get('h2').should('contain', 'Uzbekistan?')
-        .get('.answer-input').should('be.visible')
-        .get('.submit-button').should('be.visible')
+          .get('.answer-input').should('be.visible')
+          .get('.submit-button').should('be.visible')
     })
 
     // // SAD PATH
@@ -32,16 +32,26 @@ describe('Quiz Page User Flow', () => {
         cy.get('h2').should('contain', 'Uzbekistan?')
         cy.get('.user-guess').should('contain', 'Your guess was')
         cy.get('h3').should('be.visible')
-        cy.get('.subregion-fact').should('be.visible')
+        cy.get('.extra-facts').should('be.visible')
+        cy.get('.home-btn').click()
+        cy.visit('http://localhost:3000/')
+        cy.get('.home-click').click()
+        cy.visit('http://localhost:3000/')
     })
 
-    it('Should bring the user back to the home page by clicking the Header', () => {
-        cy.get('.home-click').click()
+    it('Should bring the user back to the home page by clicking the home button', () => {
+        cy.visit('http://localhost:3000/')
         cy.get('h1').contains('What In The World')
-        cy.get('.worldMapImg').should('be.visible')
         cy.get('.country-dropdown')
             .should('be.visible')
             .should('have.value', '')
     })
 
+    it('Should bring the user back to the home page by clicking the Header', () => {
+        cy.visit('http://localhost:3000/')
+        cy.get('h1').contains('What In The World')
+        cy.get('.country-dropdown')
+            .should('be.visible')
+            .should('have.value', '')
+    })
 })

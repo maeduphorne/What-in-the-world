@@ -3,7 +3,7 @@
   font-weight: bolder;
 }
 
-input {
+.answer-input {
   background-color: rgb(255 255 255 / 0%);
   margin-bottom: 1em;
   padding: .25em;
@@ -12,8 +12,25 @@ input {
   font-weight: bold;
   letter-spacing: .15em;
   border-radius: 0;
+  width: 20vw;
+  text-align: center;
 }
 
-.flag-img {
-  width: 35vw;
+input:focus{
+  outline: none;
+}
+
+.guess-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 900px) {
+  .answer-input {
+    font-size: x-small;
+    font-weight: normal;
+    text-align: center;
+  }
 }
