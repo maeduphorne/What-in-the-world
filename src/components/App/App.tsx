@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, Route, Switch, useHistory } from 'react-router-dom';
-import mapIcon from '../../assets/WorldMap.jpg';
-import peninsula from '../../assets/peninsula.jpg'
 import QuizPage from '../QuizPage/QuizPage';
 import ErrorHandling from '../ErrorHandling/ErrorHandling';
 import apiCalls from '../../api/apiCalls';
