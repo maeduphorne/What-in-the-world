@@ -1,9 +1,3 @@
-.display-area {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
 .quiz-contents {
   height: 65vh;
   display: flex;

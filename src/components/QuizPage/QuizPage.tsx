@@ -53,7 +53,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
   
   return (
     <div className="quiz-display" >
-      <section className="display-area" >
+      {/* <section className="display-area" > */}
         {currentCountry && (
         <div className="quiz-contents">
           {country && <img src={country.flag} alt={`${currentCountry.name} flag`} className="flag-img" />}
@@ -63,7 +63,7 @@ const QuizPage: React.FC<IQuizPageProps> = ({ currentCountry }) => {
           </div>  
         </div>
         )}
-      </section>
+      {/* </section> */}
     </div>
   )
 }
