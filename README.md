@@ -1,4 +1,5 @@
 # What In The World
+*As of 9/22/2021, the API this deployed page is dependent upon is deprecated. Due to this change, the product does not currently have full functionality.*
 
 ## Table Of Contents
 + [Overview](#overview)
